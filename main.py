@@ -5,7 +5,8 @@ from turtle import distance
 import requests
 import tkinter as TK
 from get_coordinates_by_city import get_coordinates_by_city
-from get_path import get_path # type: ignore
+from get_path import get_path
+ # type: ignore
 import json
 import pandas as pd
 
@@ -37,7 +38,7 @@ from get_path import get_path # type: ignore
 origin = (32.08, 34.7)
 #destination = (32.0, 34.7) # for testing the case when the distance is '0'
 destination = (38.7, -9.13)
-get_path(origin, destination)
+#get_path(origin, destination)
 #distances, 
 dist, num_points = get_path(origin, destination)
 print(dist, num_points)
@@ -46,8 +47,20 @@ print(dist, num_points)
 #now, we have the distance and the number of points in the path, we can use this information to get the coordinates of the points along the path.
 #this is second option. waiting for searoutes.com to assistance respond. 
 
+# import os
+# import sys
 
+# # בדיקה אם הקובץ קיים בתיקייה
+# if os.path.exists("get_path.py"):
+#     print("V - הקובץ get_path.py נמצא!")
+# else:
+#     print("X - הקובץ לא נמצא בתיקייה הנוכחית. רשימת קבצים:", os.listdir())
 
+# try:
+#     from get_path import get_path
+#     print("V - הייבוא הצליח!")
+# except ImportError as e:
+#     print(f"X - שגיאת ייבוא: {e}")
 
 
 

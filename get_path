@@ -2,7 +2,7 @@
 #we will use the get_path function for that.
 
 import math
-from turtle import distance
+#from turtle import distance
 
 def get_path(origin, destination, num_points=3):
     lat1, lon1 = origin
@@ -15,14 +15,13 @@ def get_path(origin, destination, num_points=3):
         math.sin(math.radians((lon2 - lon1) / 2)) ** 2
          ))
         )
-    dist = calculate_distance(origin[0], origin[1], destination[0], destination[1]) 
+    raw_dist = calculate_distance(lat1, lon1, lat2, lon2)
+    dist = round(raw_dist, 2)
 
-    if dist > 60:  # If the distance is greater than 20 nautical miles, calculate intermediate points
-        num_points += dist/20
+    if dist > 90:  # If the distance is greater than 20 nautical miles, calculate intermediate points
+        num_points += round(dist / 30)  # Add one point for every 20 nautical miles
     
-    return round(dist, 2), round(num_points, 0)
-
-
+    return dist, int(num_points)
 #### for teseting
 # origin = (32.0, 34.0)
 # #destination = (32.0, 34.7) # for testing the case when the distance is '0'
