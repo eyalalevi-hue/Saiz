@@ -21,7 +21,7 @@ import json
 
 with open("Shipping_Lanes.geojson") as f:
     data_lanes = json.load(f)
-# data_lanes["features"][0]["geometry"]["coordinates"][0][0]
+data_lanes["features"][0]["geometry"]["coordinates"][0][0]
 # lanes = data_lanes["features"]
 
 
