@@ -13,18 +13,24 @@ def get_coordinates_by_city(city: str):
 
     lat = data[0]["lat"]
     lon = data[0]["lon"]
-    return lat, lon
+    return lon, lat
 
 
 # דוגמת שימוש
-city = "Tel Aviv"
-result = get_coordinates_by_city(city)
+# city = "Tel Aviv"
+# result = get_coordinates_by_city(city)
 
-if result:
-    lat, lon = result
-    print(f"City: {city}")
-    print(f"Latitude: {lat}")
-    print(f"Longitude: {lon}")
+    #if result:
+    #lat, lon = result
+   
+   
+  ###Testing the function by printing the coordinates of the city. 
+   # print(f"City: {city}")
+   # print(f"Latitude: {lat}")
+   # print(f"Longitude: {lon}") 
+   # print(f"City: {city}")
+   # print(f"Latitude: {lat}")
+   # print(f"Longitude: {lon}")
 # ```
 
 # **פלט:**
