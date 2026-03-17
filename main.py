@@ -44,7 +44,7 @@ num_points
 #now, we have the distance and the number of points in the path, we can use this information to get the coordinates of the points along the path.
 #this is second option. waiting for searoutes.com to assistance respond. 
 
-print(distances, num_points)
+print(dist, num_points)
 
 
 

@@ -15,18 +15,18 @@ def get_path(origin, destination, num_points=3):
         math.sin(math.radians((lon2 - lon1) / 2)) ** 2
          ))
         )
-    distance = calculate_distance(origin[0], origin[1], destination[0], destination[1]) 
+    dist = calculate_distance(origin[0], origin[1], destination[0], destination[1]) 
 
-    if distance > 60:  # If the distance is greater than 20 nautical miles, calculate intermediate points
-        num_points += distance/20
+    if dist > 60:  # If the distance is greater than 20 nautical miles, calculate intermediate points
+        num_points += dist/20
     
-    return round(distance, 2), round(num_points, 0)
-   # if calculate_distance(origin[0], origin[1], destination[0], destination[1]) < 0.1:  # If the distance is very small, return the origin and destination as the path
-   # return (origin, destination, num_points)
+    return round(dist, 2), round(num_points, 0)
 
 
-origin = (32.0, 34.0)
-#destination = (32.0, 34.7) # for testing the case when the distance is '0'
-destination = (33.5, 36.0)
+#### for teseting
+# origin = (32.0, 34.0)
+# #destination = (32.0, 34.7) # for testing the case when the distance is '0'
+# destination = (33.5, 36.0)
 
-get_path(origin, destination)
+# get_path(origin, destination)
+
