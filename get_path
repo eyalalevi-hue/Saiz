@@ -18,8 +18,8 @@ def get_path(origin, destination, num_points=3):
     raw_dist = calculate_distance(lat1, lon1, lat2, lon2)
     dist = round(raw_dist, 2)
 
-    if dist > 90:  # If the distance is greater than 20 nautical miles, calculate intermediate points
-        num_points += round(dist / 30)  # Add one point for every 20 nautical miles
+    if dist > 90:  # If the distance is greater than 30 nautical miles, calculate intermediate points
+        num_points += round(dist / 30)  # Add one point for every 30 nautical miles
     
     return dist, int(num_points)
 #### for teseting
@@ -28,4 +28,3 @@ def get_path(origin, destination, num_points=3):
 # destination = (33.5, 36.0)
 
 # get_path(origin, destination)
-
