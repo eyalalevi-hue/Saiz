@@ -1,0 +1,32 @@
+#while we got the cities cordination we need to send them and get back the distance between them and the number of points in path. 
+#we will use the get_path function for that.
+
+import math
+from turtle import distance
+
+def get_path(origin, destination, num_points=3):
+    lat1, lon1 = origin
+    lat2, lon2 = destination
+
+    calculate_distance = lambda lat1, lon1, lat2, lon2: (
+        2 * 3440.065 * math.asin(math.sqrt(
+        math.sin(math.radians((lat2 - lat1) / 2)) ** 2 +
+        math.cos(math.radians(lat1)) * math.cos(math.radians(lat2)) *
+        math.sin(math.radians((lon2 - lon1) / 2)) ** 2
+         ))
+        )
+    distance = calculate_distance(origin[0], origin[1], destination[0], destination[1]) 
+
+    if distance > 60:  # If the distance is greater than 20 nautical miles, calculate intermediate points
+        num_points += distance/20
+    
+    return round(distance, 2), round(num_points, 0)
+   # if calculate_distance(origin[0], origin[1], destination[0], destination[1]) < 0.1:  # If the distance is very small, return the origin and destination as the path
+   # return (origin, destination, num_points)
+
+
+origin = (32.0, 34.0)
+#destination = (32.0, 34.7) # for testing the case when the distance is '0'
+destination = (33.5, 36.0)
+
+get_path(origin, destination)
