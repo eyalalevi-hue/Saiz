@@ -39,12 +39,13 @@ origin = (32.08, 34.7)
 destination = (38.7, -9.13)
 get_path(origin, destination)
 #distances, 
-num_points = get_path(origin, destination)
-num_points
+dist, num_points = get_path(origin, destination)
+print(dist, num_points)
+
+
 #now, we have the distance and the number of points in the path, we can use this information to get the coordinates of the points along the path.
 #this is second option. waiting for searoutes.com to assistance respond. 
 
-print(dist, num_points)
 
 
 
