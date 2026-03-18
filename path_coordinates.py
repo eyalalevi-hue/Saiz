@@ -1,3 +1,5 @@
+###Can be erased. Old approach to get coordinates from the geojson file. waiting for searoutes.com to assistance respond.
+
 
 ### Function to get points along the path and distance between the origin and destination coordinates
 #this is second option. waiting for searoutes.com to assistance respond.

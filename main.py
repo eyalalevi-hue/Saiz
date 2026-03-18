@@ -35,7 +35,7 @@ destination_coordinates = get_coordinates_by_city(destination_city)
 print(destination_coordinates)
 
 
-
+###Old version 
 #while we got the cities cordinations we need to send them and get back the distance between them, and the number of points in path. every 20 nautical miles we will add one point to the path.
 #we will use the get_path function for that.
 
@@ -86,5 +86,10 @@ else:
 
 
 ### to create the map with the path and the points we got from the get_path function
-
 create_interactive_sea_map(path, origin_coordinates, destination_coordinates)
+
+
+Next steps:
+1. use path points to provide weather information for each point along the path. waiting 
+2. Integrate the get_path function with the SeaRouter to get the actual path coordinates. 
+3. Add error handling for cases where no path is found or when the API fails. negetive cordinate.get_coordinates_by_city - Lisbon, Portugal.listed as (38.7, -9.13) instead of (38.7, -9.13)
