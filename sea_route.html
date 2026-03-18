@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_db2ca005b6930536d3a77089b7a4e0ce {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_db2ca005b6930536d3a77089b7a4e0ce" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_db2ca005b6930536d3a77089b7a4e0ce = L.map(
+                "map_db2ca005b6930536d3a77089b7a4e0ce",
+                {
+                    center: [34.311002, 33.87136565],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 7,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_3ddc8f035fafdcc5c786f70cc0594a6d = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_3ddc8f035fafdcc5c786f70cc0594a6d.addTo(map_db2ca005b6930536d3a77089b7a4e0ce);
+        
+    
+            var tile_layer_727462608d652a604c4b8b9a6c7fda15 = L.tileLayer(
+                "https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Map data: \u0026copy; OpenSeaMap contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_727462608d652a604c4b8b9a6c7fda15.addTo(map_db2ca005b6930536d3a77089b7a4e0ce);
+        
+    
+            var poly_line_986225264b452f71128f850ec4a53b0e = L.polyline(
+                [[35.25, 32.75], [35.5, 33.0], [35.5, 33.25], [35.5, 33.5], [35.5, 33.75], [35.25, 34.0], [35.0, 34.25], [34.75, 34.5], [34.5, 34.75], [34.25, 35.0], [34.0, 35.0], [33.75, 35.0], [33.5, 35.0]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_db2ca005b6930536d3a77089b7a4e0ce);
+        
+    
+            poly_line_986225264b452f71128f850ec4a53b0e.bindTooltip(
+                `<div>
+                     Sea Route
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_9894fd09c5742a1e28fa9d9e00b1f4aa = L.marker(
+                [34.9983856, 32.8191218],
+                {
+}
+            ).addTo(map_db2ca005b6930536d3a77089b7a4e0ce);
+        
+    
+            var icon_a973cd62f1f603c69c0ac8271a127d8e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "ship",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cac31e3d79b2bb70d1806d5f9248838e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c25812a441c5f8f462f401d688d362e0 = $(`<div id="html_c25812a441c5f8f462f401d688d362e0" style="width: 100.0%; height: 100.0%;">Origin: Haifa</div>`)[0];
+                popup_cac31e3d79b2bb70d1806d5f9248838e.setContent(html_c25812a441c5f8f462f401d688d362e0);
+            
+        
+
+        marker_9894fd09c5742a1e28fa9d9e00b1f4aa.bindPopup(popup_cac31e3d79b2bb70d1806d5f9248838e)
+        ;
+
+        
+    
+    
+                marker_9894fd09c5742a1e28fa9d9e00b1f4aa.setIcon(icon_a973cd62f1f603c69c0ac8271a127d8e);
+            
+    
+            var marker_0cd62c3be963235dcd5803a439998ed1 = L.marker(
+                [33.6236184, 34.9236095],
+                {
+}
+            ).addTo(map_db2ca005b6930536d3a77089b7a4e0ce);
+        
+    
+            var icon_144b0bc9e15eb0c4eaa90086ff54b26c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "anchor",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fbc2b4c9e00fae4f072b84c76ad3b149 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ce98436d4a538dce3c28c6f66de2267b = $(`<div id="html_ce98436d4a538dce3c28c6f66de2267b" style="width: 100.0%; height: 100.0%;">Destination: Limassol</div>`)[0];
+                popup_fbc2b4c9e00fae4f072b84c76ad3b149.setContent(html_ce98436d4a538dce3c28c6f66de2267b);
+            
+        
+
+        marker_0cd62c3be963235dcd5803a439998ed1.bindPopup(popup_fbc2b4c9e00fae4f072b84c76ad3b149)
+        ;
+
+        
+    
+    
+                marker_0cd62c3be963235dcd5803a439998ed1.setIcon(icon_144b0bc9e15eb0c4eaa90086ff54b26c);
+            
+</script>
+</html>

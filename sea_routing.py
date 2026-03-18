@@ -49,7 +49,7 @@ class SeaRouter:
             return None, "No path found"
 
 # --- הרצה עבור חיפה ולימסול ---
-
+'''
 # קואורדינטות מדויקות
 haifa_port = (32.824, 35.003)
 limassol_port = (34.674, 33.042)
@@ -67,3 +67,4 @@ if dist:
         print(f"Point {i+1}: {pt}")
 else:
     print(f"❌ Error: {path}")
+    '''
