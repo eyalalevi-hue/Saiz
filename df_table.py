@@ -12,7 +12,6 @@ def results_to_dataframe(full_route_report):
         lon = waypoint['location']['lon']
         
         for day in waypoint['forecast']:
-            # יצירת שורה שטוחה המשלבת נתוני נקודה ונתוני תחזית
             row = {
                 "waypoint_id": waypoint_id,
                 "lat": lat,

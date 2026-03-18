@@ -1,75 +1,87 @@
 import folium
-from folium import plugins
+from folium.plugins import TimestampedGeoJson
 
-def create_route_map(df, target_date=None):
+def create_route_map(df):
     """
-    מייצר מפה אינטראקטיבית עם נתיב הפלגה, צבעי סיכון וחצי כיוון רוח.
+    מייצר מפה אינטראקטיבית עם סרגל זמן (Slider) המציג את שינויי הסיכון לאורך 7 ימים.
     """
-    # 1. סינון ליום ספציפי (ברירת מחדל: היום הראשון בטבלה)
-    if target_date is None:
-        target_date = df['date'].iloc[0]
-    
-    day_df = df[df['date'] == target_date].copy()
-
-    # 2. יצירת המפה - ריכוז לפי הממוצע של הקואורדינטות בנתיב
+    # 1. הכנת המפה הבסיסית
     m = folium.Map(
-        location=[day_df['lat'].mean(), day_df['lon'].mean()], 
-        zoom_start=8, 
-        tiles="CartoDB positron" # מפה נקייה שקל לראות עליה צבעים
+        location=[df['lat'].mean(), df['lon'].mean()],
+        zoom_start=7,
+        tiles="CartoDB positron"
     )
 
-    # פונקציה לבחירת צבע לפי רמת סיכון
+    # 2. פונקציית עזר לצבעים
     def get_color(summary):
         if "Low" in summary: return "green"
         if "Moderate" in summary: return "orange"
         return "red"
 
-    # 3. ציור הנתיב והוספת נקודות
-    path_coords = []
-    for _, row in day_df.iterrows():
-        current_loc = [row['lat'], row['lon']]
-        path_coords.append(current_loc)
+    # 3. בניית רשימת ה"פיצ'רים" עבור ה-GeoJSON
+    features = []
+    
+    for _, row in df.iterrows():
+        # המרת התאריך לפורמט ISO שסרגל הזמן מבין (YYYY-MM-DD)
+        # מכיוון שהתאריך ב-DF הוא DD-MM-YYYY, נהפוך אותו:
+        date_parts = row['date'].split('-')
+        iso_date = f"{date_parts[2]}-{date_parts[1]}-{date_parts[0]}"
         
-        # טקסט לחלונית המידע
-        popup_html = f"""
-        <div style="font-family: Arial; width: 200px;">
-            <h4 style="margin-bottom:5px;">Waypoint {int(row['waypoint_id'])}</h4>
-            <b>Date:</b> {row['date']}<br>
-            <b>Risk Score:</b> <span style="color:{get_color(row['risk_summary'])}">{row['risk_score']}</span><br>
-            <b>Wind:</b> {row['wind_speed_kn']} kn ({row['wind_direction']})<br>
-            <b>Weather:</b> {row['weather']}<br>
-            <b>Rain:</b> {row['rain_mm']} mm
-        </div>
-        """
+        color = get_color(row['risk_summary'])
         
-        # הוספת נקודת סיכון (עיגול צבעוני)
-        folium.CircleMarker(
-            location=current_loc,
-            radius=7,
-            color=get_color(row['risk_summary']),
-            fill=True,
-            fill_opacity=0.8,
-            popup=folium.Popup(popup_html, max_width=250)
-        ).add_to(m)
+        feature = {
+            'type': 'Feature',
+            'geometry': {
+                'type': 'Point',
+                'coordinates': [row['lon'], row['lat']], # ב-GeoJSON זה קודם LON ואז LAT
+            },
+            'properties': {
+                'time': iso_date,
+                'style': {'color': color, 'fillColor': color},
+                'icon': 'circle',
+                'iconstyle': {
+                    'fillColor': color,
+                    'fillOpacity': 0.8,
+                    'stroke': 'true',
+                    'radius': 8
+                },
+                'popup': f"""
+                    <b>Waypoint {int(row['waypoint_id'])}</b><br>
+                    Date: {row['date']}<br>
+                    Risk: {row['risk_summary']} ({row['risk_score']})<br>
+                    Wind: {row['wind_speed_kn']} kn {row['wind_direction']}
+                """
+            }
+        }
+        features.append(feature)
 
-        # הוספת חץ כיוון רוח (נעזר באייקון של חץ שמסתובב לפי המעלות)
-        # הערה: כיוון הרוח ב-API הוא "מאיפה היא באה", לכן נוסיף 180 מעלות כדי שהחץ יצביע לאן היא נושבת
-        # אם יש לך את המעלות המקוריות ב-DF, השתמש בהן. אם לא, נסתפק בנקודות.
-        # כאן אני מוסיף סימון ויזואלי פשוט של כיוון הרוח המקוצר כטקסט מעל הנקודה
-        folium.map.Marker(
-            current_loc,
-            icon=folium.DivIcon(
-                icon_size=(150,36),
-                icon_anchor=(0,0),
-                html=f'<div style="font-size: 10pt; color: blue; font-weight: bold;">{row["wind_direction"]}</div>',
-            )
-        ).add_to(m)
+    # 4. הוספת רכיב הזמן למפה
+    TimestampedGeoJson(
+        {'type': 'FeatureCollection', 'features': features},
+        period='P1D', # קפיצות של יום אחד
+        add_last_point=True,
+        auto_play=False,
+        loop=False,
+        max_speed=1,
+        loop_button=True,
+        date_options='YYYY-MM-DD',
+        time_slider_drag_update=True
+    ).add_to(m)
 
-    # 4. חיבור הנקודות בקו
-    folium.PolyLine(path_coords, color="blue", weight=2, opacity=0.4, dash_array='5').add_to(m)
+    # 5. הוספת קו הנתיב הכללי (שיישאר קבוע ברקע)
+    # נחלץ את הנקודות הייחודיות של הנתיב (לפי waypoint_id)
+    unique_path = df[df['date'] == df['date'].iloc[0]][['lat', 'lon']].values.tolist()
+    folium.PolyLine(unique_path, color="blue", weight=1, opacity=0.3).add_to(m)
 
     return m
 
+# --- הרצה ---
+# וודא שהשתמשת ב-df_sorted מהשלב הקודם
+# animated_map = create_animated_route_map(df_sorted)
+
+# # שמירה
+# animated_map.save("sailing_forecast_animated.html")
+# print("Animated map ready! Open 'sailing_forecast_animated.html' in your browser.")
 # --- הרצה ---
 # וודא ש-df_sorted הוא ה-DataFrame הממוין שלך
 # sailing_map = create_route_map(df_sorted)

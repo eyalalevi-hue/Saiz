@@ -1,3 +1,5 @@
+### Old map creation code. can be erased.
+
 import folium
 
 def create_interactive_sea_map(path, origin, destination, filename="sea_route2.html"):

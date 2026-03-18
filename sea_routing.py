@@ -1,3 +1,6 @@
+### Sea Routing Module. map creation and path finding between two points in the sea.
+
+
 import networkx as nx
 import math
 from global_land_mask import globe
@@ -10,7 +13,6 @@ class SeaRouter:
 
     def _build_sea_graph(self):
         # יצירת רשת נקודות בים באזור הים התיכון (לביצועים מהירים)
-        # צמצמתי את הטווח לאזור הרלוונטי כדי שהקוד ירוץ מהר ב-GitHub
         lat_range = range(30, 40) 
         lon_range = range(30, 40)
         

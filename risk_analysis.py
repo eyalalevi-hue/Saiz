@@ -56,21 +56,21 @@ def fetch_and_check_risk(lat, lon):
         full_report = []
 
         for i in range(len(daily["time"])):
-            # המרת תאריך למבנה DD-MM-YYYY (סעיף 1)
+            # date formatting.
             raw_date = daily["time"][i]
             formatted_date = datetime.strptime(raw_date, "%Y-%m-%d").strftime("%d-%m-%Y")
 
-            # נתונים גולמיים והמרה לקשר
+            # cast KMH to Knots (1 km/h ≈ 0.54 knots)
             w_speed_kn = round(daily["wind_speed_10m_max"][i] * 0.54, 1)
             w_gusts_kn = round(daily["wind_gusts_10m_max"][i] * 0.54, 1)
             w_code = daily["weather_code"][i]
             r_sum = daily["rain_sum"][i]
             w_dir_deg = daily["wind_direction_10m_dominant"][i]
 
-            # ניתוח סיכונים (סעיף 2)
+            # risk calculation
             risk = check_risk(w_speed_kn, w_gusts_kn, w_code, r_sum)
 
-            # בניית האובייקט המזוקק
+            # create the day report structure
             day_data = {
                 "run_index": i + 1,
                 "date": formatted_date,
@@ -94,6 +94,6 @@ def fetch_and_check_risk(lat, lon):
     except Exception as e:
         return {"error": f"Failed: {str(e)}"}
 
-# דוגמה להרצה
-all_days = fetch_and_check_risk(52.52, 13.41)
-print(all_days[0]) # הדפסת היום הראשון כדוגמה
+### Testing  
+# all_days = fetch_and_check_risk(52.52, 13.41)
+# print(all_days[0]) 

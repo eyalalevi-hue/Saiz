@@ -8,15 +8,15 @@ def get_coordinates_by_city(city: str):
     data = response.json()
 
     if not data:
-        print(f"העיר '{city}' לא נמצאה")
+        print(f"City '{city}' not found")
         return None
 
     lat = data[0]["lat"]
     lon = data[0]["lon"]
-    return lon, lat
+    return lat, lon
 
 
-# דוגמת שימוש
+#### Testing ####
 # city = "Tel Aviv"
 # result = get_coordinates_by_city(city)
 
@@ -38,3 +38,15 @@ def get_coordinates_by_city(city: str):
 # City: Tel Aviv
 # Latitude: 32.0853
 # Longitude: 34.7818
+
+
+
+
+## - Testing - API working fine.
+# API_KEY = "91a0ba76dbf81c8d4a4778ebff5cd5fb"
+# lat = 32.3
+# lon = 34.8
+# url = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}"
+# response = requests.get(url)
+# data = response.json()
+# print(data) 

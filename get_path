@@ -1,3 +1,7 @@
+
+####Should be old version. to checj if can be erased.
+
+
 #while we got the cities cordination we need to send them and get back the distance between them and the number of points in path. 
 #we will use the get_path function for that.
 

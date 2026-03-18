@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_f74afbc2ea7575997821199518f5506b {
+                #map_4de10321fc65cd089cf77823ef162c95 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -50,23 +50,30 @@
             </script>
 
         
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/iso8601-js-period@0.2.1/iso8601.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-timedimension@1.1.1/dist/leaflet.timedimension.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-timedimension@1.1.1/dist/leaflet.timedimension.control.css"/>
 </head>
 <body>
     
     
-            <div class="folium-map" id="map_f74afbc2ea7575997821199518f5506b" ></div>
+            <div class="folium-map" id="map_4de10321fc65cd089cf77823ef162c95" ></div>
         
 </body>
 <script>
     
     
-            var map_f74afbc2ea7575997821199518f5506b = L.map(
-                "map_f74afbc2ea7575997821199518f5506b",
+            var map_4de10321fc65cd089cf77823ef162c95 = L.map(
+                "map_4de10321fc65cd089cf77823ef162c95",
                 {
                     center: [35.416666666666664, 33.0],
                     crs: L.CRS.EPSG3857,
                     ...{
-  "zoom": 8,
+  "zoom": 7,
   "zoomControl": true,
   "preferCanvas": false,
 }
@@ -78,7 +85,7 @@
 
         
     
-            var tile_layer_efe6b9dde685273934386e21084f7d6d = L.tileLayer(
+            var tile_layer_98bdc7c5f32ed367f9e500f6209f69ef = L.tileLayer(
                 "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
                 {
   "minZoom": 0,
@@ -95,136 +102,87 @@
             );
         
     
-            tile_layer_efe6b9dde685273934386e21084f7d6d.addTo(map_f74afbc2ea7575997821199518f5506b);
+            tile_layer_98bdc7c5f32ed367f9e500f6209f69ef.addTo(map_4de10321fc65cd089cf77823ef162c95);
         
     
-            var circle_marker_f8dc50ed3dd25a4115dae48552e4f66b = L.circleMarker(
-                [35.25, 32.75],
-                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
-            ).addTo(map_f74afbc2ea7575997821199518f5506b);
-        
-    
-        var popup_13c88d6082c2a35db3c19e957efdb102 = L.popup({
-  "maxWidth": 250,
-});
-
-        
-            
-                var html_d81c9d860cf60e20e2399df71872eac5 = $(`<div id="html_d81c9d860cf60e20e2399df71872eac5" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h4 style="margin-bottom:5px;">Waypoint 1</h4>             <b>Date:</b> 18-03-2026<br>             <b>Risk Score:</b> <span style="color:orange">51.9</span><br>             <b>Wind:</b> 12.6 kn (E)<br>             <b>Weather:</b> Moderate Drizzle<br>             <b>Rain:</b> 0.0 mm         </div>         </div>`)[0];
-                popup_13c88d6082c2a35db3c19e957efdb102.setContent(html_d81c9d860cf60e20e2399df71872eac5);
-            
-        
-
-        circle_marker_f8dc50ed3dd25a4115dae48552e4f66b.bindPopup(popup_13c88d6082c2a35db3c19e957efdb102)
-        ;
-
-        
-    
-    
-            var marker_17b9c38feb5a21551c983adbcd8a5872 = L.marker(
-                [35.25, 32.75],
+            L.Control.TimeDimensionCustom = L.Control.TimeDimension.extend({
+                _getDisplayDateFormat: function(date){
+                    var newdate = new moment(date);
+                    console.log(newdate)
+                    return newdate.format("YYYY-MM-DD");
+                }
+            });
+            map_4de10321fc65cd089cf77823ef162c95.timeDimension = L.timeDimension(
                 {
-}
-            ).addTo(map_f74afbc2ea7575997821199518f5506b);
-        
-    
-            var div_icon_7ba1b8ffbbb748e05532a42d47c92e06 = L.divIcon({
-  "html": "\u003cdiv style=\"font-size: 10pt; color: blue; font-weight: bold;\"\u003eE\u003c/div\u003e",
-  "iconSize": [150, 36],
-  "iconAnchor": [0, 0],
-  "className": "empty",
-});
-        
-    
-                marker_17b9c38feb5a21551c983adbcd8a5872.setIcon(div_icon_7ba1b8ffbbb748e05532a42d47c92e06);
-            
-    
-            var circle_marker_67ce68b547d7c5f0c71f420c3c8c305c = L.circleMarker(
-                [35.5, 33.0],
-                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
-            ).addTo(map_f74afbc2ea7575997821199518f5506b);
-        
-    
-        var popup_a7b7e596a99a83666623ab54021ed56d = L.popup({
-  "maxWidth": 250,
-});
-
-        
-            
-                var html_d24d0fcac25e78a11a4d45786764838d = $(`<div id="html_d24d0fcac25e78a11a4d45786764838d" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h4 style="margin-bottom:5px;">Waypoint 2</h4>             <b>Date:</b> 18-03-2026<br>             <b>Risk Score:</b> <span style="color:orange">51.9</span><br>             <b>Wind:</b> 12.6 kn (E)<br>             <b>Weather:</b> Moderate Drizzle<br>             <b>Rain:</b> 0.0 mm         </div>         </div>`)[0];
-                popup_a7b7e596a99a83666623ab54021ed56d.setContent(html_d24d0fcac25e78a11a4d45786764838d);
-            
-        
-
-        circle_marker_67ce68b547d7c5f0c71f420c3c8c305c.bindPopup(popup_a7b7e596a99a83666623ab54021ed56d)
-        ;
-
-        
-    
-    
-            var marker_9d9833cbdb0fd78744db5472bdfb3ce7 = L.marker(
-                [35.5, 33.0],
+                    period: "P1D",
+                }
+            );
+            var timeDimensionControl = new L.Control.TimeDimensionCustom(
                 {
+  "position": "bottomleft",
+  "minSpeed": 0.1,
+  "maxSpeed": 1,
+  "autoPlay": false,
+  "loopButton": true,
+  "timeSliderDragUpdate": true,
+  "speedSlider": true,
+  "playerOptions": {
+  "transitionTime": 200,
+  "loop": false,
+  "startOver": true,
+},
 }
-            ).addTo(map_f74afbc2ea7575997821199518f5506b);
-        
-    
-            var div_icon_7738ab221f167795d12c110cfd12b49f = L.divIcon({
-  "html": "\u003cdiv style=\"font-size: 10pt; color: blue; font-weight: bold;\"\u003eE\u003c/div\u003e",
-  "iconSize": [150, 36],
-  "iconAnchor": [0, 0],
-  "className": "empty",
-});
-        
-    
-                marker_9d9833cbdb0fd78744db5472bdfb3ce7.setIcon(div_icon_7738ab221f167795d12c110cfd12b49f);
-            
-    
-            var circle_marker_d52284619397ed52477e2bb311d48a92 = L.circleMarker(
-                [35.5, 33.25],
-                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
-            ).addTo(map_f74afbc2ea7575997821199518f5506b);
-        
-    
-        var popup_9106c095cd15e5aababdb57885fd3dab = L.popup({
-  "maxWidth": 250,
-});
+            );
+            map_4de10321fc65cd089cf77823ef162c95.addControl(this.timeDimensionControl);
 
-        
-            
-                var html_41cd74d0b7bf56be1fa64528629af732 = $(`<div id="html_41cd74d0b7bf56be1fa64528629af732" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h4 style="margin-bottom:5px;">Waypoint 3</h4>             <b>Date:</b> 18-03-2026<br>             <b>Risk Score:</b> <span style="color:orange">44.7</span><br>             <b>Wind:</b> 9.7 kn (NE)<br>             <b>Weather:</b> Light Drizzle<br>             <b>Rain:</b> 0.0 mm         </div>         </div>`)[0];
-                popup_9106c095cd15e5aababdb57885fd3dab.setContent(html_41cd74d0b7bf56be1fa64528629af732);
-            
-        
+            var geoJsonLayer = L.geoJson({"type": "FeatureCollection", "features": [{"type": "Feature", "geometry": {"type": "Point", "coordinates": [32.75, 35.25]}, "properties": {"time": "2026-03-18", "style": {"color": "orange", "fillColor": "orange"}, "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 1</b><br>\n                    Date: 18-03-2026<br>\n                    Risk: Moderate Risk (58.4)<br>\n                    Wind: 12.2 kn E\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [33.0, 35.5]}, "properties": {"time": "2026-03-18", "style": {"color": "orange", "fillColor": "orange"}, "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 2</b><br>\n                    Date: 18-03-2026<br>\n                    Risk: Moderate Risk (58.4)<br>\n                    Wind: 12.2 kn E\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [33.25, 35.5]}, "properties": {"time": "2026-03-18", "style": {"color": "orange", "fillColor": "orange"}, "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 3</b><br>\n                    Date: 18-03-2026<br>\n                    Risk: Moderate Risk (55.8)<br>\n                    Wind: 10.5 kn NE\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [32.75, 35.25]}, "properties": {"time": "2026-03-19", "style": {"color": "orange", "fillColor": "orange"}, "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 1</b><br>\n                    Date: 19-03-2026<br>\n                    Risk: Moderate Risk (60.2)<br>\n                    Wind: 11.2 kn NE\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [33.0, 35.5]}, "properties": {"time": "2026-03-19", "style": {"color": "orange", "fillColor": "orange"}, "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 2</b><br>\n                    Date: 19-03-2026<br>\n                    Risk: Moderate Risk (60.2)<br>\n                    Wind: 11.2 kn NE\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [33.25, 35.5]}, "properties": {"time": "2026-03-19", "style": {"color": "orange", "fillColor": "orange"}, "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 3</b><br>\n                    Date: 19-03-2026<br>\n                    Risk: Moderate Risk (57.9)<br>\n                    Wind: 8.9 kn NE\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [32.75, 35.25]}, "properties": {"time": "2026-03-20", "style": {"color": "orange", "fillColor": "orange"}, "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 1</b><br>\n                    Date: 20-03-2026<br>\n                    Risk: Moderate Risk (41.1)<br>\n                    Wind: 7.8 kn SW\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [33.0, 35.5]}, "properties": {"time": "2026-03-20", "style": {"color": "orange", "fillColor": "orange"}, "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 2</b><br>\n                    Date: 20-03-2026<br>\n                    Risk: Moderate Risk (41.1)<br>\n                    Wind: 7.8 kn SW\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [33.25, 35.5]}, "properties": {"time": "2026-03-20", "style": {"color": "green", "fillColor": "green"}, "icon": "circle", "iconstyle": {"fillColor": "green", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 3</b><br>\n                    Date: 20-03-2026<br>\n                    Risk: Low Risk (32.2)<br>\n                    Wind: 5.2 kn SW\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [32.75, 35.25]}, "properties": {"time": "2026-03-21", "style": {"color": "green", "fillColor": "green"}, "icon": "circle", "iconstyle": {"fillColor": "green", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 1</b><br>\n                    Date: 21-03-2026<br>\n                    Risk: Low Risk (34.4)<br>\n                    Wind: 6.2 kn E\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [33.0, 35.5]}, "properties": {"time": "2026-03-21", "style": {"color": "green", "fillColor": "green"}, "icon": "circle", "iconstyle": {"fillColor": "green", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 2</b><br>\n                    Date: 21-03-2026<br>\n                    Risk: Low Risk (34.4)<br>\n                    Wind: 6.2 kn E\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [33.25, 35.5]}, "properties": {"time": "2026-03-21", "style": {"color": "green", "fillColor": "green"}, "icon": "circle", "iconstyle": {"fillColor": "green", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 3</b><br>\n                    Date: 21-03-2026<br>\n                    Risk: Low Risk (39.8)<br>\n                    Wind: 6.9 kn SE\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [32.75, 35.25]}, "properties": {"time": "2026-03-22", "style": {"color": "orange", "fillColor": "orange"}, "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 1</b><br>\n                    Date: 22-03-2026<br>\n                    Risk: Moderate Risk (43.4)<br>\n                    Wind: 9.5 kn NE\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [33.0, 35.5]}, "properties": {"time": "2026-03-22", "style": {"color": "orange", "fillColor": "orange"}, "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 2</b><br>\n                    Date: 22-03-2026<br>\n                    Risk: Moderate Risk (43.4)<br>\n                    Wind: 9.5 kn NE\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [33.25, 35.5]}, "properties": {"time": "2026-03-22", "style": {"color": "green", "fillColor": "green"}, "icon": "circle", "iconstyle": {"fillColor": "green", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 3</b><br>\n                    Date: 22-03-2026<br>\n                    Risk: Low Risk (35.7)<br>\n                    Wind: 6.5 kn NE\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [32.75, 35.25]}, "properties": {"time": "2026-03-23", "style": {"color": "green", "fillColor": "green"}, "icon": "circle", "iconstyle": {"fillColor": "green", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 1</b><br>\n                    Date: 23-03-2026<br>\n                    Risk: Low Risk (39.2)<br>\n                    Wind: 9.5 kn E\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [33.0, 35.5]}, "properties": {"time": "2026-03-23", "style": {"color": "green", "fillColor": "green"}, "icon": "circle", "iconstyle": {"fillColor": "green", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 2</b><br>\n                    Date: 23-03-2026<br>\n                    Risk: Low Risk (39.2)<br>\n                    Wind: 9.5 kn E\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [33.25, 35.5]}, "properties": {"time": "2026-03-23", "style": {"color": "green", "fillColor": "green"}, "icon": "circle", "iconstyle": {"fillColor": "green", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 3</b><br>\n                    Date: 23-03-2026<br>\n                    Risk: Low Risk (34.3)<br>\n                    Wind: 7.8 kn E\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [32.75, 35.25]}, "properties": {"time": "2026-03-24", "style": {"color": "red", "fillColor": "red"}, "icon": "circle", "iconstyle": {"fillColor": "red", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 1</b><br>\n                    Date: 24-03-2026<br>\n                    Risk: High Risk (80.3)<br>\n                    Wind: 14.8 kn NE\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [33.0, 35.5]}, "properties": {"time": "2026-03-24", "style": {"color": "red", "fillColor": "red"}, "icon": "circle", "iconstyle": {"fillColor": "red", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 2</b><br>\n                    Date: 24-03-2026<br>\n                    Risk: High Risk (80.3)<br>\n                    Wind: 14.8 kn NE\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [33.25, 35.5]}, "properties": {"time": "2026-03-24", "style": {"color": "red", "fillColor": "red"}, "icon": "circle", "iconstyle": {"fillColor": "red", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 3</b><br>\n                    Date: 24-03-2026<br>\n                    Risk: High Risk (73.2)<br>\n                    Wind: 13.2 kn NE\n                "}}]}, {
+                    pointToLayer: function (feature, latLng) {
+                        if (feature.properties.icon == 'marker') {
+                            if(feature.properties.iconstyle){
+                                return new L.Marker(latLng, {
+                                    icon: L.icon(feature.properties.iconstyle)});
+                            }
+                            //else
+                            return new L.Marker(latLng);
+                        }
+                        if (feature.properties.icon == 'circle') {
+                            if (feature.properties.iconstyle) {
+                                return new L.circleMarker(latLng, feature.properties.iconstyle)
+                                };
+                            //else
+                            return new L.circleMarker(latLng);
+                        }
+                        //else
 
-        circle_marker_d52284619397ed52477e2bb311d48a92.bindPopup(popup_9106c095cd15e5aababdb57885fd3dab)
-        ;
+                        return new L.Marker(latLng);
+                    },
+                    style: function (feature) {
+                        return feature.properties.style;
+                    },
+                    onEachFeature: function(feature, layer) {
+                        if (feature.properties.popup) {
+                        layer.bindPopup(feature.properties.popup);
+                        }
+                        if (feature.properties.tooltip) {
+                        layer.bindTooltip(feature.properties.tooltip);
+                        }
+                    }
+                })
 
-        
-    
-    
-            var marker_39609f1a3a444c8c48e31746a7bee5f7 = L.marker(
-                [35.5, 33.25],
+            var timestamped_geo_json_e46e52419e1ba0e1cfb5bc44cffef463 = L.timeDimension.layer.geoJson(
+                geoJsonLayer,
                 {
-}
-            ).addTo(map_f74afbc2ea7575997821199518f5506b);
+                    updateTimeDimension: true,
+                    addlastPoint: true,
+                    duration: undefined,
+                }
+            ).addTo(map_4de10321fc65cd089cf77823ef162c95);
         
     
-            var div_icon_e59b9f76709af048a2eabb9e63b07781 = L.divIcon({
-  "html": "\u003cdiv style=\"font-size: 10pt; color: blue; font-weight: bold;\"\u003eNE\u003c/div\u003e",
-  "iconSize": [150, 36],
-  "iconAnchor": [0, 0],
-  "className": "empty",
-});
-        
-    
-                marker_39609f1a3a444c8c48e31746a7bee5f7.setIcon(div_icon_e59b9f76709af048a2eabb9e63b07781);
-            
-    
-            var poly_line_eff39538196a7dc70a5a237c87c8d8de = L.polyline(
+            var poly_line_bc364cd6cb4090f15581f3aa92003491 = L.polyline(
                 [[35.25, 32.75], [35.5, 33.0], [35.5, 33.25]],
-                {"bubblingMouseEvents": true, "color": "blue", "dashArray": "5", "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.4, "smoothFactor": 1.0, "stroke": true, "weight": 2}
-            ).addTo(map_f74afbc2ea7575997821199518f5506b);
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.3, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_4de10321fc65cd089cf77823ef162c95);
         
 </script>
 </html>

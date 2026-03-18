@@ -5,38 +5,31 @@ import time
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 #from get_path import get_path # type: ignore
 #from time import time
-from turtle import distance
+#from turtle import distance
 
-import requests
-import tkinter as TK
+#import requests
+#import tkinter as TK
 from get_coordinates_by_city import get_coordinates_by_city
 #from get_path import get_path
  # type: ignore
-import json
+#import json
 import pandas as pd
 
 from sea_routing import SeaRouter
-from sea_map import create_interactive_sea_map
+#from sea_map import create_interactive_sea_map
 from risk_analysis import  fetch_and_check_risk
 from df_table import results_to_dataframe
 from sea_mapp import create_route_map
-## - Testing - API working fine.
-# API_KEY = "91a0ba76dbf81c8d4a4778ebff5cd5fb"
-# lat = 32.3
-# lon = 34.8
-# url = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}"
-# response = requests.get(url)
-# data = response.json()
-# print(data) 
 
-# User will provide the origin and destination cities, and we will get their coordinates using the get_coordinates_by_city function.
+
+### User will provide the origin and destination cities, then we need to get their coordinates.
 origin_city = "Haifa"
 origin_coordinates = get_coordinates_by_city(origin_city)
-print(origin_coordinates) 
+#print(origin_coordinates) 
 
 destination_city = "Larnaka" #not Lisbon
 destination_coordinates = get_coordinates_by_city(destination_city)
-print(destination_coordinates)
+#print(destination_coordinates)
 
 
 ###Old version 
@@ -74,7 +67,9 @@ print(destination_coordinates)
 ##haifa_port = (32.824, 35.003)
 ##limassol_port = (34.674, 33.042)
 
-router = SeaRouter(resolution = 0.25) # רזולוציה גבוהה לדיוק מירבי
+
+### creating the sea router and getting the path between the origin and destination coordinates
+router = SeaRouter(resolution = 0.25) # Resolution in degrees (0.25° ~ 27.8 nautical miles at the equator)
 dist, path = router.get_sea_path(origin_coordinates, destination_coordinates)
 
 if dist:
@@ -88,10 +83,10 @@ if dist:
 else:
     print(f"❌ Error: {path}")
 
-print(path )
+#print(path )
 
 
-
+### Now we have the path coordinates, we can use them to get the weather information for each point along the path and analyze the risk for sailing on those days.
 def analyze_route_risk(coordinate_list):
     route_analysis = []
     print(f"Analyzing {len(coordinate_list)} waypoints. Please wait...")
@@ -110,14 +105,14 @@ def analyze_route_risk(coordinate_list):
         else:
             print(f"✘ Error at Waypoint {i+1}: {point_data.get('error')}")
 
-        time.sleep(0.2) 
+        time.sleep(1) 
 
     return route_analysis
 
-# --- הרצה ---
-coords = [(35.25, 32.75), (35.5, 33.0), (35.5, 33.25)]#, (35.5, 33.5), (35.5, 33.75), (35.25, 34.0), (35.0, 34.25), (34.75, 34.5), (34.5, 34.75), (34.25, 35.0), (34.0, 35.0), (33.75, 35.0), (33.5, 35.0)]
 
-final_results = analyze_route_risk(coords)
+#coords = [(35.25, 32.75), (35.5, 33.0), (35.5, 33.25)]#, (35.5, 33.5), (35.5, 33.75), (35.25, 34.0), (35.0, 34.25), (34.75, 34.5), (34.5, 34.75), (34.25, 35.0), (34.0, 35.0), (33.75, 35.0), (33.5, 35.0)]
+#path  = coords
+final_results = analyze_route_risk(path)
 
 ## store the results in a DataFrame
 df = results_to_dataframe(final_results)
@@ -129,7 +124,7 @@ print(df)
 
 sailing_map = create_route_map(df)
 
-# שמירה וצפייה
+### to create the map with the path and the points we got from the get_path function
 sailing_map.save("sailing_route_final.html")
 print("Map saved to sailing_route_final.html - Open this file in your browser.")
 
@@ -139,8 +134,7 @@ print("Map saved to sailing_route_final.html - Open this file in your browser.")
 #create_route_map(df, filename="sea_route_points.html")
 # sailing_map = create_route_map(df)
 
-# # שמירה לקובץ HTML (שאפשר לפתוח בדפדפן)
-# sailing_map.save("sailing_route.html")
+
 
 
 
