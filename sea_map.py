@@ -44,7 +44,7 @@ def create_interactive_sea_map(path, origin, destination, filename="sea_route.ht
     m.save(filename)
     print(f"✅ המפה נוצרה בהצלחה! פתח את הקובץ '{filename}' בדפדפן שלך.")
 
-# --- הרצה (בהנחה ש-path כבר קיים מהקוד הקודם) ---
+
 # נשתמש בנקודות שקיבלנו מה-SeaRouter:
 #haifa = (32.82, 35.00)
 #limassol = (34.67, 33.04)

@@ -1,8 +1,10 @@
 #SailZ
 import sys
 import os
+import time
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 #from get_path import get_path # type: ignore
+from time import time
 from turtle import distance
 
 import requests
@@ -15,6 +17,7 @@ import pandas as pd
 
 from sea_routing import SeaRouter
 from sea_map import create_interactive_sea_map
+from risk_analysis import  fetch_and_check_risk
 
 ## - Testing - API working fine.
 # API_KEY = "91a0ba76dbf81c8d4a4778ebff5cd5fb"
@@ -84,12 +87,42 @@ if dist:
 else:
     print(f"❌ Error: {path}")
 
+print(path )
+
+def analyze_route_risk(coordinate_list):
+    route_analysis = []
+    print(f"Analyzing {len(coordinate_list)} waypoints. Please wait...")
+
+    for i, (lat, lon) in enumerate(coordinate_list):
+        # קריאה ל-API וניתוח
+        point_data = fetch_and_check_risk(lat, lon)
+        
+        if isinstance(point_data, list):
+            route_analysis.append({
+                "waypoint_id": i + 1,
+                "location": {"lat": lat, "lon": lon},
+                "forecast": point_data
+            })
+            print(f"✔ Processed Waypoint {i+1}/{len(coordinate_list)}")
+        else:
+            print(f"✘ Error at Waypoint {i+1}: {point_data.get('error')}")
+
+        # הוספת המתנה של 200 מילי-שניות (0.2 שניות)
+        time.sleep(0.2) 
+
+    return route_analysis
+
+# --- הרצה ---
+coords = [(35.25, 32.75), (35.5, 33.0), (35.5, 33.25)]#, (35.5, 33.5), (35.5, 33.75), (35.25, 34.0), (35.0, 34.25), (34.75, 34.5), (34.5, 34.75), (34.25, 35.0), (34.0, 35.0), (33.75, 35.0), (33.5, 35.0)]
+
+final_results = analyze_route_risk(coords)
 
 ### to create the map with the path and the points we got from the get_path function
 create_interactive_sea_map(path, origin_coordinates, destination_coordinates)
 
-
+'''
 Next steps:
 1. use path points to provide weather information for each point along the path. waiting 
 2. Integrate the get_path function with the SeaRouter to get the actual path coordinates. 
 3. Add error handling for cases where no path is found or when the API fails. negetive cordinate.get_coordinates_by_city - Lisbon, Portugal.listed as (38.7, -9.13) instead of (38.7, -9.13)
+'''
