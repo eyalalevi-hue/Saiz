@@ -1,6 +1,6 @@
 import folium
 
-def create_interactive_sea_map(path, origin, destination, filename="sea_route.html"):
+def create_interactive_sea_map(path, origin, destination, filename="sea_route2.html"):
     # 1. יצירת המפה במרכז המסלול
     center_lat = (origin[0] + destination[0]) / 2
     center_lon = (origin[1] + destination[1]) / 2

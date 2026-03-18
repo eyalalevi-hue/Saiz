@@ -4,7 +4,7 @@ import os
 import time
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 #from get_path import get_path # type: ignore
-from time import time
+#from time import time
 from turtle import distance
 
 import requests
@@ -18,7 +18,8 @@ import pandas as pd
 from sea_routing import SeaRouter
 from sea_map import create_interactive_sea_map
 from risk_analysis import  fetch_and_check_risk
-
+from df_table import results_to_dataframe
+from sea_mapp import create_route_map
 ## - Testing - API working fine.
 # API_KEY = "91a0ba76dbf81c8d4a4778ebff5cd5fb"
 # lat = 32.3
@@ -89,12 +90,14 @@ else:
 
 print(path )
 
+
+
 def analyze_route_risk(coordinate_list):
     route_analysis = []
     print(f"Analyzing {len(coordinate_list)} waypoints. Please wait...")
 
     for i, (lat, lon) in enumerate(coordinate_list):
-        # קריאה ל-API וניתוח
+        # call API for each point and get the risk assessment
         point_data = fetch_and_check_risk(lat, lon)
         
         if isinstance(point_data, list):
@@ -107,7 +110,6 @@ def analyze_route_risk(coordinate_list):
         else:
             print(f"✘ Error at Waypoint {i+1}: {point_data.get('error')}")
 
-        # הוספת המתנה של 200 מילי-שניות (0.2 שניות)
         time.sleep(0.2) 
 
     return route_analysis
@@ -117,8 +119,30 @@ coords = [(35.25, 32.75), (35.5, 33.0), (35.5, 33.25)]#, (35.5, 33.5), (35.5, 33
 
 final_results = analyze_route_risk(coords)
 
+## store the results in a DataFrame
+df = results_to_dataframe(final_results)
+df['date'] = pd.to_datetime(df['date'], format='%d-%m-%Y') #Fformating
+df = df.sort_values(by=['date', 'waypoint_id'], ascending=[True, True]) #Sorting
+df['date'] = df['date'].dt.strftime('%d-%m-%Y') #Re-formatting back to string for better display
+print(df)
+
+
+sailing_map = create_route_map(df)
+
+# שמירה וצפייה
+sailing_map.save("sailing_route_final.html")
+print("Map saved to sailing_route_final.html - Open this file in your browser.")
+
+
 ### to create the map with the path and the points we got from the get_path function
-create_interactive_sea_map(path, origin_coordinates, destination_coordinates)
+#create_interactive_sea_map(path, origin_coordinates, destination_coordinates)
+#create_route_map(df, filename="sea_route_points.html")
+# sailing_map = create_route_map(df)
+
+# # שמירה לקובץ HTML (שאפשר לפתוח בדפדפן)
+# sailing_map.save("sailing_route.html")
+
+
 
 '''
 Next steps:

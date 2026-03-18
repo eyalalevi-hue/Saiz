@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_f74afbc2ea7575997821199518f5506b {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_f74afbc2ea7575997821199518f5506b" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_f74afbc2ea7575997821199518f5506b = L.map(
+                "map_f74afbc2ea7575997821199518f5506b",
+                {
+                    center: [35.416666666666664, 33.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 8,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_efe6b9dde685273934386e21084f7d6d = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_efe6b9dde685273934386e21084f7d6d.addTo(map_f74afbc2ea7575997821199518f5506b);
+        
+    
+            var circle_marker_f8dc50ed3dd25a4115dae48552e4f66b = L.circleMarker(
+                [35.25, 32.75],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_f74afbc2ea7575997821199518f5506b);
+        
+    
+        var popup_13c88d6082c2a35db3c19e957efdb102 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d81c9d860cf60e20e2399df71872eac5 = $(`<div id="html_d81c9d860cf60e20e2399df71872eac5" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h4 style="margin-bottom:5px;">Waypoint 1</h4>             <b>Date:</b> 18-03-2026<br>             <b>Risk Score:</b> <span style="color:orange">51.9</span><br>             <b>Wind:</b> 12.6 kn (E)<br>             <b>Weather:</b> Moderate Drizzle<br>             <b>Rain:</b> 0.0 mm         </div>         </div>`)[0];
+                popup_13c88d6082c2a35db3c19e957efdb102.setContent(html_d81c9d860cf60e20e2399df71872eac5);
+            
+        
+
+        circle_marker_f8dc50ed3dd25a4115dae48552e4f66b.bindPopup(popup_13c88d6082c2a35db3c19e957efdb102)
+        ;
+
+        
+    
+    
+            var marker_17b9c38feb5a21551c983adbcd8a5872 = L.marker(
+                [35.25, 32.75],
+                {
+}
+            ).addTo(map_f74afbc2ea7575997821199518f5506b);
+        
+    
+            var div_icon_7ba1b8ffbbb748e05532a42d47c92e06 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 10pt; color: blue; font-weight: bold;\"\u003eE\u003c/div\u003e",
+  "iconSize": [150, 36],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_17b9c38feb5a21551c983adbcd8a5872.setIcon(div_icon_7ba1b8ffbbb748e05532a42d47c92e06);
+            
+    
+            var circle_marker_67ce68b547d7c5f0c71f420c3c8c305c = L.circleMarker(
+                [35.5, 33.0],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_f74afbc2ea7575997821199518f5506b);
+        
+    
+        var popup_a7b7e596a99a83666623ab54021ed56d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d24d0fcac25e78a11a4d45786764838d = $(`<div id="html_d24d0fcac25e78a11a4d45786764838d" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h4 style="margin-bottom:5px;">Waypoint 2</h4>             <b>Date:</b> 18-03-2026<br>             <b>Risk Score:</b> <span style="color:orange">51.9</span><br>             <b>Wind:</b> 12.6 kn (E)<br>             <b>Weather:</b> Moderate Drizzle<br>             <b>Rain:</b> 0.0 mm         </div>         </div>`)[0];
+                popup_a7b7e596a99a83666623ab54021ed56d.setContent(html_d24d0fcac25e78a11a4d45786764838d);
+            
+        
+
+        circle_marker_67ce68b547d7c5f0c71f420c3c8c305c.bindPopup(popup_a7b7e596a99a83666623ab54021ed56d)
+        ;
+
+        
+    
+    
+            var marker_9d9833cbdb0fd78744db5472bdfb3ce7 = L.marker(
+                [35.5, 33.0],
+                {
+}
+            ).addTo(map_f74afbc2ea7575997821199518f5506b);
+        
+    
+            var div_icon_7738ab221f167795d12c110cfd12b49f = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 10pt; color: blue; font-weight: bold;\"\u003eE\u003c/div\u003e",
+  "iconSize": [150, 36],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_9d9833cbdb0fd78744db5472bdfb3ce7.setIcon(div_icon_7738ab221f167795d12c110cfd12b49f);
+            
+    
+            var circle_marker_d52284619397ed52477e2bb311d48a92 = L.circleMarker(
+                [35.5, 33.25],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_f74afbc2ea7575997821199518f5506b);
+        
+    
+        var popup_9106c095cd15e5aababdb57885fd3dab = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_41cd74d0b7bf56be1fa64528629af732 = $(`<div id="html_41cd74d0b7bf56be1fa64528629af732" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h4 style="margin-bottom:5px;">Waypoint 3</h4>             <b>Date:</b> 18-03-2026<br>             <b>Risk Score:</b> <span style="color:orange">44.7</span><br>             <b>Wind:</b> 9.7 kn (NE)<br>             <b>Weather:</b> Light Drizzle<br>             <b>Rain:</b> 0.0 mm         </div>         </div>`)[0];
+                popup_9106c095cd15e5aababdb57885fd3dab.setContent(html_41cd74d0b7bf56be1fa64528629af732);
+            
+        
+
+        circle_marker_d52284619397ed52477e2bb311d48a92.bindPopup(popup_9106c095cd15e5aababdb57885fd3dab)
+        ;
+
+        
+    
+    
+            var marker_39609f1a3a444c8c48e31746a7bee5f7 = L.marker(
+                [35.5, 33.25],
+                {
+}
+            ).addTo(map_f74afbc2ea7575997821199518f5506b);
+        
+    
+            var div_icon_e59b9f76709af048a2eabb9e63b07781 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 10pt; color: blue; font-weight: bold;\"\u003eNE\u003c/div\u003e",
+  "iconSize": [150, 36],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_39609f1a3a444c8c48e31746a7bee5f7.setIcon(div_icon_e59b9f76709af048a2eabb9e63b07781);
+            
+    
+            var poly_line_eff39538196a7dc70a5a237c87c8d8de = L.polyline(
+                [[35.25, 32.75], [35.5, 33.0], [35.5, 33.25]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": "5", "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.4, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_f74afbc2ea7575997821199518f5506b);
+        
+</script>
+</html>
