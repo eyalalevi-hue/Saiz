@@ -86,6 +86,9 @@ else:
 #print(path )
 
 
+
+
+
 ### Now we have the path coordinates, we can use them to get the weather information for each point along the path and analyze the risk for sailing on those days.
 def analyze_route_risk(coordinate_list):
     route_analysis = []
@@ -143,4 +146,37 @@ Next steps:
 1. use path points to provide weather information for each point along the path. waiting 
 2. Integrate the get_path function with the SeaRouter to get the actual path coordinates. 
 3. Add error handling for cases where no path is found or when the API fails. negetive cordinate.get_coordinates_by_city - Lisbon, Portugal.listed as (38.7, -9.13) instead of (38.7, -9.13)
+'''
+
+
+
+
+
+
+
+
+
+
+'''
+import numpy as np
+
+def get_equally_distributed_points(data, num_points=10):
+    """
+    מחזירה מספר מוגדר של נקודות מתוך רשימה בהתפלגות שווה על פני האינדקסים.
+    """
+    if len(data) <= num_points:
+        return data  # אם הסדרה קצרה מדי, מחזירים את כולה
+    
+    # יצירת אינדקסים במרווחים שווים (כולל הקצוות)
+    indices = np.linspace(0, len(data) - 1, num_points).astype(int)
+    
+    # שליפת הערכים לפי האינדקסים שחושבו
+    return [data[i] for i in indices]
+
+# דוגמה לשימוש:
+my_data = list(range(100, 1000, 5)) # סדרה של 180 ערכים
+result = get_equally_distributed_points(my_data, 10)
+
+print(f"נבחרו {len(result)} נקודות:")
+print(result)
 '''
