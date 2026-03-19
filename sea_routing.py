@@ -50,8 +50,11 @@ class SeaRouter:
         except nx.NetworkXNoPath:
             return None, "No path found"
 
-# --- הרצה עבור חיפה ולימסול ---
+
 '''
+
+# --- הרצה עבור חיפה ולימסול ---
+
 # קואורדינטות מדויקות
 haifa_port = (32.824, 35.003)
 limassol_port = (34.674, 33.042)

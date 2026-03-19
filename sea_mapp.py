@@ -1,6 +1,74 @@
 import folium
+import pandas as pd
 from folium.plugins import TimestampedGeoJson
 
+
+def create_route_map(df):
+    m = folium.Map(location=[df['lat'].mean(), df['lon'].mean()], zoom_start=7, tiles="CartoDB positron")
+    
+    for _, row in df.iterrows():
+        # --- תיקון השגיאה כאן ---
+        raw_date = str(row.get('date', 'N/A'))
+        
+        # בודק אם התאריך נראה כמו DD-MM-YYYY (מכיל שני מקפים לפחות)
+        if '-' in raw_date and len(raw_date.split('-')) == 3:
+            date_parts = raw_date.split('-')
+            iso_date = f"{date_parts[2]}-{date_parts[1]}-{date_parts[0]}"
+        else:
+            iso_date = "No Date" # או פשוט להשאיר את raw_date
+        # ------------------------
+
+        def get_risk_color(summary_text):
+            # בדיקה אם הערך הוא NaN או None
+            if pd.isna(summary_text) or summary_text is None:
+                return "blue"
+            
+            val = str(summary_text).lower().strip()
+            if "high" in val: return "red"
+            elif "moderate" in val: return "orange"
+            elif "low" in val: return "green"
+            return "blue"
+
+        m_color = get_risk_color(row['risk_summary'])
+        
+        # בתוך ה-Popup נציג את התאריך רק אם הוא קיים
+        date_display = f"<b>תאריך:</b> {iso_date}<br>" if iso_date != "No Date" else ""
+        
+        popup_html = f"""
+        <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">
+            <b style="color: #1565c0;">נקודה: {row['waypoint_id']}</b><br>
+            <hr style="margin: 5px 0;">
+            {date_display}
+            <b>סיכון:</b> {row['risk_summary']}<br>
+            <b>רוח:</b> {row['wind_speed_kn']} קשר<br>
+        </div>
+        """
+        
+        # בונוס: בוא נעשה את הנקודות הריקות קטנות יותר
+        is_forecast = row['risk_summary'] != "N/A" and row['risk_summary'] != "No Forecast"
+        radius_size = 12 if is_forecast else 4
+        fill_op = 0.8 if is_forecast else 0.4
+        
+        folium.CircleMarker(
+            location=[row['lat'], row['lon']],
+            radius=radius_size,
+            color=m_color,
+            fill=True,
+            fill_color=m_color,
+            fill_opacity=fill_op,
+            popup=folium.Popup(popup_html, max_width=300)
+        ).add_to(m)
+        
+    # חיבור הנתיב
+    points = df[['lat', 'lon']].values.tolist()
+    folium.PolyLine(points, color="blue", weight=1, opacity=0.3).add_to(m)
+    
+    return m
+
+
+
+
+'''
 def create_route_map(df):
     """
     מייצר מפה אינטראקטיבית עם סרגל זמן (Slider) המציג את שינויי הסיכון לאורך 7 ימים.
@@ -74,6 +142,10 @@ def create_route_map(df):
     folium.PolyLine(unique_path, color="blue", weight=1, opacity=0.3).add_to(m)
 
     return m
+
+
+'''
+
 
 # --- הרצה ---
 # וודא שהשתמשת ב-df_sorted מהשלב הקודם

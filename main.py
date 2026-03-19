@@ -2,74 +2,34 @@
 import sys
 import os
 import time
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-#from get_path import get_path # type: ignore
-#from time import time
-#from turtle import distance
+from turtle import st
+#sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-#import requests
-#import tkinter as TK
+#from app import create_streamlit_map
 from get_coordinates_by_city import get_coordinates_by_city
-#from get_path import get_path
- # type: ignore
-#import json
+
 import pandas as pd
+import numpy as np
 
 from sea_routing import SeaRouter
-#from sea_map import create_interactive_sea_map
 from risk_analysis import  fetch_and_check_risk
 from df_table import results_to_dataframe
 from sea_mapp import create_route_map
+from streamlit_folium import st_folium
 
 
 ### User will provide the origin and destination cities, then we need to get their coordinates.
-origin_city = "Haifa"
+origin_city = "Tel Aviv" # "Haifa" #not Lisbon
 origin_coordinates = get_coordinates_by_city(origin_city)
-#print(origin_coordinates) 
+print(origin_coordinates) 
 
-destination_city = "Larnaka" #not Lisbon
+destination_city = "Larnaka"# "Larnaka" #not Lisbon
 destination_coordinates = get_coordinates_by_city(destination_city)
-#print(destination_coordinates)
-
-
-###Old version 
-#while we got the cities cordinations we need to send them and get back the distance between them, and the number of points in path. every 20 nautical miles we will add one point to the path.
-#we will use the get_path function for that.
-
-# import sys
-# import os
-# sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-# from get_path import get_path # type: ignore
-
-#####get_path function doesnt work correctly.######
-
-# origin = origin_coordinates #(32.08, 34.7)
-# #destination = (32.0, 34.7) # for testing the case when the distance is '0'
-# destination = destination_coordinates #(38.7, -9.13)
-# #get_path(origin, destination)
-# #distances, 
-# dist, num_points = get_path(origin, destination)
-
-# print(f"Distance: {dist}")
-# print(f"Points: {num_points}")
-##########
-
-
-#now, we have the distance and the number of points in the path, we can use this information to get the coordinates of the points along the path.
-#this is second option. waiting for searoutes.com to assistance respond. 
-
-#Distance: 2663.61
-#Points: 92
-
-
-
-
-##haifa_port = (32.824, 35.003)
-##limassol_port = (34.674, 33.042)
+print(destination_coordinates)
 
 
 ### creating the sea router and getting the path between the origin and destination coordinates
-router = SeaRouter(resolution = 0.25) # Resolution in degrees (0.25° ~ 27.8 nautical miles at the equator)
+router = SeaRouter(resolution = 0.1) # Resolution in degrees (0.25° ~ 27.8 nautical miles at the equator)
 dist, path = router.get_sea_path(origin_coordinates, destination_coordinates)
 
 if dist:
@@ -82,10 +42,33 @@ if dist:
         print(f"Point {i+1}: {pt}")
 else:
     print(f"❌ Error: {path}")
-
 #print(path )
 
 
+
+### Reduce the number of points to a manageable number for weather analysis (e.g., 5 points)
+
+def get_equally_distributed_points(path, num_points=5):
+
+    if len(path) <= num_points:
+        return path  
+    
+    # יצירת אינדקסים במרווחים שווים (כולל הקצוות)
+    indices = np.linspace(0, len(path) - 1, num_points).astype(int)
+    
+    # שליפת הערכים לפי האינדקסים שחושבו
+    return [path[i] for i in indices]
+
+# דוגמה לשימוש:
+#my_data = [(35.25, 32.75), (35.5, 33.0), (35.5, 33.25), (35.5, 33.5), (35.5, 33.75), (35.25, 34.0), (35.0, 34.25), (34.75, 34.5), (34.5, 34.75), (34.25, 35.0), (34.0, 35.0), (33.75, 35.0), (33.5, 35.0)]
+
+reduce_path = get_equally_distributed_points(path, 5)
+#print ('reduce_path: ',reduce_path)
+#print ('Path: ', path)
+
+#reduce oath without the points we will use for the weather analysis
+reduce_set = set(reduce_path)
+remaining_path = [point for point in path if point not in reduce_set]
 
 
 
@@ -115,7 +98,7 @@ def analyze_route_risk(coordinate_list):
 
 #coords = [(35.25, 32.75), (35.5, 33.0), (35.5, 33.25)]#, (35.5, 33.5), (35.5, 33.75), (35.25, 34.0), (35.0, 34.25), (34.75, 34.5), (34.5, 34.75), (34.25, 35.0), (34.0, 35.0), (33.75, 35.0), (33.5, 35.0)]
 #path  = coords
-final_results = analyze_route_risk(path)
+final_results = analyze_route_risk(reduce_path)
 
 ## store the results in a DataFrame
 df = results_to_dataframe(final_results)
@@ -125,13 +108,58 @@ df['date'] = df['date'].dt.strftime('%d-%m-%Y') #Re-formatting back to string fo
 print(df)
 
 
-sailing_map = create_route_map(df)
+#Combine the original path with the reduced path to create a complete DataFrame for all waypoints, including those without forecasts.
+# 1. יצירת הבסיס מהנתיב המלא (31 נקודות)
+df_final = pd.DataFrame(path, columns=['lat', 'lon'])
+df_final = pd.merge(df_final, df, on=['lat', 'lon'], how='left')
+df_final['waypoint_id'] = range(1, len(df_final) + 1)
+text_cols = ['risk_summary', 'wind_direction', 'weather', 'date']
+for col in text_cols:
+    if col in df_final.columns:
+        df_final[col] = df_final[col].fillna("N/A")
+num_cols = ['risk_score', 'wind_speed_kn', 'wind_speed_risk', 'wind_gusts_kn', 'wind_gusts_risk', 'rain_mm', 'rain_risk']
+for col in num_cols:
+    if col in df_final.columns:
+        df_final[col] = df_final[col].fillna(0)
+
+if 'run_index' in df_final.columns:
+    df_final['run_index'] = df_final['run_index'].ffill().bfill()
+
+#print(df_final.head())
+
+
+
+###########
+sailing_map = create_route_map(df_final)
+
+###########
+
+#Saving the results to a CSV file for further analysis or sharing.
+df_final.to_csv('sailing_route_forecast.csv', index=False, encoding='utf-8')
+print("✅ 'sailing_route_forecast.csv' saved successfully!")
+print("    Go to streamlit_map")
+
 
 ### to create the map with the path and the points we got from the get_path function
 sailing_map.save("sailing_route_final.html")
 print("Map saved to sailing_route_final.html - Open this file in your browser.")
 
 
+
+
+
+
+'''
+if 'df' in locals() or 'df' in globals():
+    # יצירת המפה
+    m = create_streamlit_map(df)
+    
+    # הפקודה הקריטית שמציגה את המפה בתוך האפליקציה
+    st_folium(m, width=1200, height=600)
+else:
+    st.warning("לא נמצאו נתונים להצגה. וודא שה-DataFrame טעון.")
+''' 
+    
 ### to create the map with the path and the points we got from the get_path function
 #create_interactive_sea_map(path, origin_coordinates, destination_coordinates)
 #create_route_map(df, filename="sea_route_points.html")
@@ -156,16 +184,14 @@ Next steps:
 
 
 
-
 '''
+
 import numpy as np
 
-def get_equally_distributed_points(data, num_points=10):
-    """
-    מחזירה מספר מוגדר של נקודות מתוך רשימה בהתפלגות שווה על פני האינדקסים.
-    """
+def get_equally_distributed_points(data, num_points=5):
+
     if len(data) <= num_points:
-        return data  # אם הסדרה קצרה מדי, מחזירים את כולה
+        return data  
     
     # יצירת אינדקסים במרווחים שווים (כולל הקצוות)
     indices = np.linspace(0, len(data) - 1, num_points).astype(int)
@@ -174,9 +200,13 @@ def get_equally_distributed_points(data, num_points=10):
     return [data[i] for i in indices]
 
 # דוגמה לשימוש:
-my_data = list(range(100, 1000, 5)) # סדרה של 180 ערכים
-result = get_equally_distributed_points(my_data, 10)
+#my_data = list(range(100, 1000, 5)) # סדרה של 180 ערכים
+
+my_data = [(35.25, 32.75), (35.5, 33.0), (35.5, 33.25), (35.5, 33.5), (35.5, 33.75), (35.25, 34.0), (35.0, 34.25), (34.75, 34.5), (34.5, 34.75), (34.25, 35.0), (34.0, 35.0), (33.75, 35.0), (33.5, 35.0)]
+
+result = get_equally_distributed_points(my_data, 5)
 
 print(f"נבחרו {len(result)} נקודות:")
 print(result)
+
 '''

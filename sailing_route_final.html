@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_4de10321fc65cd089cf77823ef162c95 {
+                #map_38dda3448f2413620903c3575d4e1615 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -50,27 +50,20 @@
             </script>
 
         
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/iso8601-js-period@0.2.1/iso8601.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/leaflet-timedimension@1.1.1/dist/leaflet.timedimension.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-timedimension@1.1.1/dist/leaflet.timedimension.control.css"/>
 </head>
 <body>
     
     
-            <div class="folium-map" id="map_4de10321fc65cd089cf77823ef162c95" ></div>
+            <div class="folium-map" id="map_38dda3448f2413620903c3575d4e1615" ></div>
         
 </body>
 <script>
     
     
-            var map_4de10321fc65cd089cf77823ef162c95 = L.map(
-                "map_4de10321fc65cd089cf77823ef162c95",
+            var map_38dda3448f2413620903c3575d4e1615 = L.map(
+                "map_38dda3448f2413620903c3575d4e1615",
                 {
-                    center: [35.416666666666664, 33.0],
+                    center: [33.50000000000001, 34.47457627118644],
                     crs: L.CRS.EPSG3857,
                     ...{
   "zoom": 7,
@@ -85,7 +78,7 @@
 
         
     
-            var tile_layer_98bdc7c5f32ed367f9e500f6209f69ef = L.tileLayer(
+            var tile_layer_46255c7d8a27399b9d73387e09850c2c = L.tileLayer(
                 "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
                 {
   "minZoom": 0,
@@ -102,87 +95,1370 @@
             );
         
     
-            tile_layer_98bdc7c5f32ed367f9e500f6209f69ef.addTo(map_4de10321fc65cd089cf77823ef162c95);
+            tile_layer_46255c7d8a27399b9d73387e09850c2c.addTo(map_38dda3448f2413620903c3575d4e1615);
         
     
-            L.Control.TimeDimensionCustom = L.Control.TimeDimension.extend({
-                _getDisplayDateFormat: function(date){
-                    var newdate = new moment(date);
-                    console.log(newdate)
-                    return newdate.format("YYYY-MM-DD");
-                }
-            });
-            map_4de10321fc65cd089cf77823ef162c95.timeDimension = L.timeDimension(
-                {
-                    period: "P1D",
-                }
-            );
-            var timeDimensionControl = new L.Control.TimeDimensionCustom(
-                {
-  "position": "bottomleft",
-  "minSpeed": 0.1,
-  "maxSpeed": 1,
-  "autoPlay": false,
-  "loopButton": true,
-  "timeSliderDragUpdate": true,
-  "speedSlider": true,
-  "playerOptions": {
-  "transitionTime": 200,
-  "loop": false,
-  "startOver": true,
-},
-}
-            );
-            map_4de10321fc65cd089cf77823ef162c95.addControl(this.timeDimensionControl);
-
-            var geoJsonLayer = L.geoJson({"type": "FeatureCollection", "features": [{"type": "Feature", "geometry": {"type": "Point", "coordinates": [32.75, 35.25]}, "properties": {"time": "2026-03-18", "style": {"color": "orange", "fillColor": "orange"}, "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 1</b><br>\n                    Date: 18-03-2026<br>\n                    Risk: Moderate Risk (58.4)<br>\n                    Wind: 12.2 kn E\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [33.0, 35.5]}, "properties": {"time": "2026-03-18", "style": {"color": "orange", "fillColor": "orange"}, "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 2</b><br>\n                    Date: 18-03-2026<br>\n                    Risk: Moderate Risk (58.4)<br>\n                    Wind: 12.2 kn E\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [33.25, 35.5]}, "properties": {"time": "2026-03-18", "style": {"color": "orange", "fillColor": "orange"}, "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 3</b><br>\n                    Date: 18-03-2026<br>\n                    Risk: Moderate Risk (55.8)<br>\n                    Wind: 10.5 kn NE\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [32.75, 35.25]}, "properties": {"time": "2026-03-19", "style": {"color": "orange", "fillColor": "orange"}, "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 1</b><br>\n                    Date: 19-03-2026<br>\n                    Risk: Moderate Risk (60.2)<br>\n                    Wind: 11.2 kn NE\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [33.0, 35.5]}, "properties": {"time": "2026-03-19", "style": {"color": "orange", "fillColor": "orange"}, "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 2</b><br>\n                    Date: 19-03-2026<br>\n                    Risk: Moderate Risk (60.2)<br>\n                    Wind: 11.2 kn NE\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [33.25, 35.5]}, "properties": {"time": "2026-03-19", "style": {"color": "orange", "fillColor": "orange"}, "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 3</b><br>\n                    Date: 19-03-2026<br>\n                    Risk: Moderate Risk (57.9)<br>\n                    Wind: 8.9 kn NE\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [32.75, 35.25]}, "properties": {"time": "2026-03-20", "style": {"color": "orange", "fillColor": "orange"}, "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 1</b><br>\n                    Date: 20-03-2026<br>\n                    Risk: Moderate Risk (41.1)<br>\n                    Wind: 7.8 kn SW\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [33.0, 35.5]}, "properties": {"time": "2026-03-20", "style": {"color": "orange", "fillColor": "orange"}, "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 2</b><br>\n                    Date: 20-03-2026<br>\n                    Risk: Moderate Risk (41.1)<br>\n                    Wind: 7.8 kn SW\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [33.25, 35.5]}, "properties": {"time": "2026-03-20", "style": {"color": "green", "fillColor": "green"}, "icon": "circle", "iconstyle": {"fillColor": "green", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 3</b><br>\n                    Date: 20-03-2026<br>\n                    Risk: Low Risk (32.2)<br>\n                    Wind: 5.2 kn SW\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [32.75, 35.25]}, "properties": {"time": "2026-03-21", "style": {"color": "green", "fillColor": "green"}, "icon": "circle", "iconstyle": {"fillColor": "green", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 1</b><br>\n                    Date: 21-03-2026<br>\n                    Risk: Low Risk (34.4)<br>\n                    Wind: 6.2 kn E\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [33.0, 35.5]}, "properties": {"time": "2026-03-21", "style": {"color": "green", "fillColor": "green"}, "icon": "circle", "iconstyle": {"fillColor": "green", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 2</b><br>\n                    Date: 21-03-2026<br>\n                    Risk: Low Risk (34.4)<br>\n                    Wind: 6.2 kn E\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [33.25, 35.5]}, "properties": {"time": "2026-03-21", "style": {"color": "green", "fillColor": "green"}, "icon": "circle", "iconstyle": {"fillColor": "green", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 3</b><br>\n                    Date: 21-03-2026<br>\n                    Risk: Low Risk (39.8)<br>\n                    Wind: 6.9 kn SE\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [32.75, 35.25]}, "properties": {"time": "2026-03-22", "style": {"color": "orange", "fillColor": "orange"}, "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 1</b><br>\n                    Date: 22-03-2026<br>\n                    Risk: Moderate Risk (43.4)<br>\n                    Wind: 9.5 kn NE\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [33.0, 35.5]}, "properties": {"time": "2026-03-22", "style": {"color": "orange", "fillColor": "orange"}, "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 2</b><br>\n                    Date: 22-03-2026<br>\n                    Risk: Moderate Risk (43.4)<br>\n                    Wind: 9.5 kn NE\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [33.25, 35.5]}, "properties": {"time": "2026-03-22", "style": {"color": "green", "fillColor": "green"}, "icon": "circle", "iconstyle": {"fillColor": "green", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 3</b><br>\n                    Date: 22-03-2026<br>\n                    Risk: Low Risk (35.7)<br>\n                    Wind: 6.5 kn NE\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [32.75, 35.25]}, "properties": {"time": "2026-03-23", "style": {"color": "green", "fillColor": "green"}, "icon": "circle", "iconstyle": {"fillColor": "green", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 1</b><br>\n                    Date: 23-03-2026<br>\n                    Risk: Low Risk (39.2)<br>\n                    Wind: 9.5 kn E\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [33.0, 35.5]}, "properties": {"time": "2026-03-23", "style": {"color": "green", "fillColor": "green"}, "icon": "circle", "iconstyle": {"fillColor": "green", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 2</b><br>\n                    Date: 23-03-2026<br>\n                    Risk: Low Risk (39.2)<br>\n                    Wind: 9.5 kn E\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [33.25, 35.5]}, "properties": {"time": "2026-03-23", "style": {"color": "green", "fillColor": "green"}, "icon": "circle", "iconstyle": {"fillColor": "green", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 3</b><br>\n                    Date: 23-03-2026<br>\n                    Risk: Low Risk (34.3)<br>\n                    Wind: 7.8 kn E\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [32.75, 35.25]}, "properties": {"time": "2026-03-24", "style": {"color": "red", "fillColor": "red"}, "icon": "circle", "iconstyle": {"fillColor": "red", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 1</b><br>\n                    Date: 24-03-2026<br>\n                    Risk: High Risk (80.3)<br>\n                    Wind: 14.8 kn NE\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [33.0, 35.5]}, "properties": {"time": "2026-03-24", "style": {"color": "red", "fillColor": "red"}, "icon": "circle", "iconstyle": {"fillColor": "red", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 2</b><br>\n                    Date: 24-03-2026<br>\n                    Risk: High Risk (80.3)<br>\n                    Wind: 14.8 kn NE\n                "}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [33.25, 35.5]}, "properties": {"time": "2026-03-24", "style": {"color": "red", "fillColor": "red"}, "icon": "circle", "iconstyle": {"fillColor": "red", "fillOpacity": 0.8, "stroke": "true", "radius": 8}, "popup": "\n                    <b>Waypoint 3</b><br>\n                    Date: 24-03-2026<br>\n                    Risk: High Risk (73.2)<br>\n                    Wind: 13.2 kn NE\n                "}}]}, {
-                    pointToLayer: function (feature, latLng) {
-                        if (feature.properties.icon == 'marker') {
-                            if(feature.properties.iconstyle){
-                                return new L.Marker(latLng, {
-                                    icon: L.icon(feature.properties.iconstyle)});
-                            }
-                            //else
-                            return new L.Marker(latLng);
-                        }
-                        if (feature.properties.icon == 'circle') {
-                            if (feature.properties.iconstyle) {
-                                return new L.circleMarker(latLng, feature.properties.iconstyle)
-                                };
-                            //else
-                            return new L.circleMarker(latLng);
-                        }
-                        //else
-
-                        return new L.Marker(latLng);
-                    },
-                    style: function (feature) {
-                        return feature.properties.style;
-                    },
-                    onEachFeature: function(feature, layer) {
-                        if (feature.properties.popup) {
-                        layer.bindPopup(feature.properties.popup);
-                        }
-                        if (feature.properties.tooltip) {
-                        layer.bindTooltip(feature.properties.tooltip);
-                        }
-                    }
-                })
-
-            var timestamped_geo_json_e46e52419e1ba0e1cfb5bc44cffef463 = L.timeDimension.layer.geoJson(
-                geoJsonLayer,
-                {
-                    updateTimeDimension: true,
-                    addlastPoint: true,
-                    duration: undefined,
-                }
-            ).addTo(map_4de10321fc65cd089cf77823ef162c95);
+            var circle_marker_ed2b2eebe939ce0d2f5fe055a19e209d = L.circleMarker(
+                [32.1, 34.7],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
         
     
-            var poly_line_bc364cd6cb4090f15581f3aa92003491 = L.polyline(
-                [[35.25, 32.75], [35.5, 33.0], [35.5, 33.25]],
+        var popup_c9210caff094b074f0e47acc44482e81 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ed60ac7d6af625854cf9341eabd21e47 = $(`<div id="html_ed60ac7d6af625854cf9341eabd21e47" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 1</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-19<br>             <b>סיכון:</b> Moderate Risk<br>             <b>רוח:</b> 17.3 קשר<br>         </div>         </div>`)[0];
+                popup_c9210caff094b074f0e47acc44482e81.setContent(html_ed60ac7d6af625854cf9341eabd21e47);
+            
+        
+
+        circle_marker_ed2b2eebe939ce0d2f5fe055a19e209d.bindPopup(popup_c9210caff094b074f0e47acc44482e81)
+        ;
+
+        
+    
+    
+            var circle_marker_c9f33ef8189bb69341ba0cbe6553d78d = L.circleMarker(
+                [32.1, 34.7],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_e1022101f859068341731e8bdfdcc45e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_87897eb51c06ec42b7cb75f039ed89ef = $(`<div id="html_87897eb51c06ec42b7cb75f039ed89ef" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 2</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-20<br>             <b>סיכון:</b> Moderate Risk<br>             <b>רוח:</b> 13.4 קשר<br>         </div>         </div>`)[0];
+                popup_e1022101f859068341731e8bdfdcc45e.setContent(html_87897eb51c06ec42b7cb75f039ed89ef);
+            
+        
+
+        circle_marker_c9f33ef8189bb69341ba0cbe6553d78d.bindPopup(popup_e1022101f859068341731e8bdfdcc45e)
+        ;
+
+        
+    
+    
+            var circle_marker_1df8688f3aea407e32f94c3de2fe7709 = L.circleMarker(
+                [32.1, 34.7],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_d351e2284d6ad0273738402a0ddf78c1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_976a507aa5983b4bffccdd1c41e3cf7f = $(`<div id="html_976a507aa5983b4bffccdd1c41e3cf7f" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 3</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-21<br>             <b>סיכון:</b> Moderate Risk<br>             <b>רוח:</b> 14.6 קשר<br>         </div>         </div>`)[0];
+                popup_d351e2284d6ad0273738402a0ddf78c1.setContent(html_976a507aa5983b4bffccdd1c41e3cf7f);
+            
+        
+
+        circle_marker_1df8688f3aea407e32f94c3de2fe7709.bindPopup(popup_d351e2284d6ad0273738402a0ddf78c1)
+        ;
+
+        
+    
+    
+            var circle_marker_ac6a9c361cafb795ad44f074e2369f41 = L.circleMarker(
+                [32.1, 34.7],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_30f4aaac1e28b74938672f4a57a615c9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_383539eade7e23d78f40164115522ff8 = $(`<div id="html_383539eade7e23d78f40164115522ff8" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 4</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-22<br>             <b>סיכון:</b> Moderate Risk<br>             <b>רוח:</b> 13.0 קשר<br>         </div>         </div>`)[0];
+                popup_30f4aaac1e28b74938672f4a57a615c9.setContent(html_383539eade7e23d78f40164115522ff8);
+            
+        
+
+        circle_marker_ac6a9c361cafb795ad44f074e2369f41.bindPopup(popup_30f4aaac1e28b74938672f4a57a615c9)
+        ;
+
+        
+    
+    
+            var circle_marker_2434a73c368e3910635e8a55736cb0a2 = L.circleMarker(
+                [32.1, 34.7],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_e71cb9f43661b74e09c810236b3f2a9b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_74fe455728ccb0f7157df83ae93859c2 = $(`<div id="html_74fe455728ccb0f7157df83ae93859c2" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 5</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-23<br>             <b>סיכון:</b> Low Risk<br>             <b>רוח:</b> 6.2 קשר<br>         </div>         </div>`)[0];
+                popup_e71cb9f43661b74e09c810236b3f2a9b.setContent(html_74fe455728ccb0f7157df83ae93859c2);
+            
+        
+
+        circle_marker_2434a73c368e3910635e8a55736cb0a2.bindPopup(popup_e71cb9f43661b74e09c810236b3f2a9b)
+        ;
+
+        
+    
+    
+            var circle_marker_29a2ffeed5813cdd2e5c0cbc231bc60b = L.circleMarker(
+                [32.1, 34.7],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_6f9eb9dc679358ad5012a1e7195061dd = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b8abe47c35f78deba16fe822cee9c3e8 = $(`<div id="html_b8abe47c35f78deba16fe822cee9c3e8" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 6</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-24<br>             <b>סיכון:</b> Moderate Risk<br>             <b>רוח:</b> 9.9 קשר<br>         </div>         </div>`)[0];
+                popup_6f9eb9dc679358ad5012a1e7195061dd.setContent(html_b8abe47c35f78deba16fe822cee9c3e8);
+            
+        
+
+        circle_marker_29a2ffeed5813cdd2e5c0cbc231bc60b.bindPopup(popup_6f9eb9dc679358ad5012a1e7195061dd)
+        ;
+
+        
+    
+    
+            var circle_marker_22bfb38e3e6c5c3be46ce0ba3311f60d = L.circleMarker(
+                [32.1, 34.7],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_22f736f7d41b6543fe5ac15b14c85248 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1191c4810f921db308428a5f9b7f1f27 = $(`<div id="html_1191c4810f921db308428a5f9b7f1f27" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 7</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-25<br>             <b>סיכון:</b> High Risk<br>             <b>רוח:</b> 18.5 קשר<br>         </div>         </div>`)[0];
+                popup_22f736f7d41b6543fe5ac15b14c85248.setContent(html_1191c4810f921db308428a5f9b7f1f27);
+            
+        
+
+        circle_marker_22bfb38e3e6c5c3be46ce0ba3311f60d.bindPopup(popup_22f736f7d41b6543fe5ac15b14c85248)
+        ;
+
+        
+    
+    
+            var circle_marker_b8e96a20035852e4eb01a3936a12f5aa = L.circleMarker(
+                [32.2, 34.7],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_321f295fc1bcc477e92037915838ee38 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3b310b5a0165c2231a835ce0b5507eea = $(`<div id="html_3b310b5a0165c2231a835ce0b5507eea" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 8</b><br>             <hr style="margin: 5px 0;">                          <b>סיכון:</b> N/A<br>             <b>רוח:</b> 0.0 קשר<br>         </div>         </div>`)[0];
+                popup_321f295fc1bcc477e92037915838ee38.setContent(html_3b310b5a0165c2231a835ce0b5507eea);
+            
+        
+
+        circle_marker_b8e96a20035852e4eb01a3936a12f5aa.bindPopup(popup_321f295fc1bcc477e92037915838ee38)
+        ;
+
+        
+    
+    
+            var circle_marker_fd9d6506cb787c840fd2b4a38e6eadf9 = L.circleMarker(
+                [32.3, 34.7],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_acff0b7bdfefd71e0f7603b26a5b9d48 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ece9c2b4bb24d1a40dbfe65527fae976 = $(`<div id="html_ece9c2b4bb24d1a40dbfe65527fae976" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 9</b><br>             <hr style="margin: 5px 0;">                          <b>סיכון:</b> N/A<br>             <b>רוח:</b> 0.0 קשר<br>         </div>         </div>`)[0];
+                popup_acff0b7bdfefd71e0f7603b26a5b9d48.setContent(html_ece9c2b4bb24d1a40dbfe65527fae976);
+            
+        
+
+        circle_marker_fd9d6506cb787c840fd2b4a38e6eadf9.bindPopup(popup_acff0b7bdfefd71e0f7603b26a5b9d48)
+        ;
+
+        
+    
+    
+            var circle_marker_046c00f1a153960a8a154eb309f5d863 = L.circleMarker(
+                [32.4, 34.7],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_6ae4e0344e84a1b06f79e3cb2520acb4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2ae45e4309b05aaa689f774baad41086 = $(`<div id="html_2ae45e4309b05aaa689f774baad41086" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 10</b><br>             <hr style="margin: 5px 0;">                          <b>סיכון:</b> N/A<br>             <b>רוח:</b> 0.0 קשר<br>         </div>         </div>`)[0];
+                popup_6ae4e0344e84a1b06f79e3cb2520acb4.setContent(html_2ae45e4309b05aaa689f774baad41086);
+            
+        
+
+        circle_marker_046c00f1a153960a8a154eb309f5d863.bindPopup(popup_6ae4e0344e84a1b06f79e3cb2520acb4)
+        ;
+
+        
+    
+    
+            var circle_marker_5966d338c18a08250bfc0498d92ae9da = L.circleMarker(
+                [32.5, 34.7],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_f44332c5123d00c4967f7a2d3a586c70 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c16eeb26c827526448d07fb9eacdb616 = $(`<div id="html_c16eeb26c827526448d07fb9eacdb616" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 11</b><br>             <hr style="margin: 5px 0;">                          <b>סיכון:</b> N/A<br>             <b>רוח:</b> 0.0 קשר<br>         </div>         </div>`)[0];
+                popup_f44332c5123d00c4967f7a2d3a586c70.setContent(html_c16eeb26c827526448d07fb9eacdb616);
+            
+        
+
+        circle_marker_5966d338c18a08250bfc0498d92ae9da.bindPopup(popup_f44332c5123d00c4967f7a2d3a586c70)
+        ;
+
+        
+    
+    
+            var circle_marker_8adb47c20b7332c6ecc8972382c86e24 = L.circleMarker(
+                [32.6, 34.7],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_ef6f64bf47eed158649815ba414c3acb = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_629e3ecc0816fab6b4ca22120101debc = $(`<div id="html_629e3ecc0816fab6b4ca22120101debc" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 12</b><br>             <hr style="margin: 5px 0;">                          <b>סיכון:</b> N/A<br>             <b>רוח:</b> 0.0 קשר<br>         </div>         </div>`)[0];
+                popup_ef6f64bf47eed158649815ba414c3acb.setContent(html_629e3ecc0816fab6b4ca22120101debc);
+            
+        
+
+        circle_marker_8adb47c20b7332c6ecc8972382c86e24.bindPopup(popup_ef6f64bf47eed158649815ba414c3acb)
+        ;
+
+        
+    
+    
+            var circle_marker_f0d54ce097c9bb706e3c81259cb9422d = L.circleMarker(
+                [32.7, 34.7],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_c75ea83628ec242963173eea400390ec = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2c3ce75eba746c4de10df13a6dbb8a5f = $(`<div id="html_2c3ce75eba746c4de10df13a6dbb8a5f" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 13</b><br>             <hr style="margin: 5px 0;">                          <b>סיכון:</b> N/A<br>             <b>רוח:</b> 0.0 קשר<br>         </div>         </div>`)[0];
+                popup_c75ea83628ec242963173eea400390ec.setContent(html_2c3ce75eba746c4de10df13a6dbb8a5f);
+            
+        
+
+        circle_marker_f0d54ce097c9bb706e3c81259cb9422d.bindPopup(popup_c75ea83628ec242963173eea400390ec)
+        ;
+
+        
+    
+    
+            var circle_marker_2b0cd41dbdf0d33145fcca919879e3fe = L.circleMarker(
+                [32.8, 34.7],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_b52e368dda993c11af4dd0f7dabbb636 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a9d61ee423ee7083bd1042ddce4109c2 = $(`<div id="html_a9d61ee423ee7083bd1042ddce4109c2" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 14</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-19<br>             <b>סיכון:</b> Moderate Risk<br>             <b>רוח:</b> 16.5 קשר<br>         </div>         </div>`)[0];
+                popup_b52e368dda993c11af4dd0f7dabbb636.setContent(html_a9d61ee423ee7083bd1042ddce4109c2);
+            
+        
+
+        circle_marker_2b0cd41dbdf0d33145fcca919879e3fe.bindPopup(popup_b52e368dda993c11af4dd0f7dabbb636)
+        ;
+
+        
+    
+    
+            var circle_marker_39d887233722e8a11e1ad92e4d488351 = L.circleMarker(
+                [32.8, 34.7],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_6cc6bfba3b404595c58f25973d64dcec = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_99e949a323d2b58817c97b72dfcde7ef = $(`<div id="html_99e949a323d2b58817c97b72dfcde7ef" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 15</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-20<br>             <b>סיכון:</b> Moderate Risk<br>             <b>רוח:</b> 11.8 קשר<br>         </div>         </div>`)[0];
+                popup_6cc6bfba3b404595c58f25973d64dcec.setContent(html_99e949a323d2b58817c97b72dfcde7ef);
+            
+        
+
+        circle_marker_39d887233722e8a11e1ad92e4d488351.bindPopup(popup_6cc6bfba3b404595c58f25973d64dcec)
+        ;
+
+        
+    
+    
+            var circle_marker_1d6e9b000953a304abd10e33c47c5b00 = L.circleMarker(
+                [32.8, 34.7],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_86e013d2b1c5bc01ae03ca8fde6fffb9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fcd64367bd7bbdeb544949a4d04d9887 = $(`<div id="html_fcd64367bd7bbdeb544949a4d04d9887" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 16</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-21<br>             <b>סיכון:</b> Moderate Risk<br>             <b>רוח:</b> 12.2 קשר<br>         </div>         </div>`)[0];
+                popup_86e013d2b1c5bc01ae03ca8fde6fffb9.setContent(html_fcd64367bd7bbdeb544949a4d04d9887);
+            
+        
+
+        circle_marker_1d6e9b000953a304abd10e33c47c5b00.bindPopup(popup_86e013d2b1c5bc01ae03ca8fde6fffb9)
+        ;
+
+        
+    
+    
+            var circle_marker_9d7e50eec9c008cf9fc1e8b0e3d2d97b = L.circleMarker(
+                [32.8, 34.7],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_395fe6d93e382f527e5142ca1269574f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a80db1dcb27d13176e680a10bf365131 = $(`<div id="html_a80db1dcb27d13176e680a10bf365131" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 17</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-22<br>             <b>סיכון:</b> Moderate Risk<br>             <b>רוח:</b> 13.9 קשר<br>         </div>         </div>`)[0];
+                popup_395fe6d93e382f527e5142ca1269574f.setContent(html_a80db1dcb27d13176e680a10bf365131);
+            
+        
+
+        circle_marker_9d7e50eec9c008cf9fc1e8b0e3d2d97b.bindPopup(popup_395fe6d93e382f527e5142ca1269574f)
+        ;
+
+        
+    
+    
+            var circle_marker_5d8393e8d5370a697cc1009d86515c37 = L.circleMarker(
+                [32.8, 34.7],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_e62baa1438a68898f5359094cf7e0042 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c618a514d7168514b02696cffadb21e8 = $(`<div id="html_c618a514d7168514b02696cffadb21e8" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 18</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-23<br>             <b>סיכון:</b> Low Risk<br>             <b>רוח:</b> 6.9 קשר<br>         </div>         </div>`)[0];
+                popup_e62baa1438a68898f5359094cf7e0042.setContent(html_c618a514d7168514b02696cffadb21e8);
+            
+        
+
+        circle_marker_5d8393e8d5370a697cc1009d86515c37.bindPopup(popup_e62baa1438a68898f5359094cf7e0042)
+        ;
+
+        
+    
+    
+            var circle_marker_e009f073024e5679e4cdd048300c7f4f = L.circleMarker(
+                [32.8, 34.7],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_7962b500533deea7b6fdc77f77bad8ab = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f5e75eb79fc9a94b7b00a269220db169 = $(`<div id="html_f5e75eb79fc9a94b7b00a269220db169" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 19</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-24<br>             <b>סיכון:</b> Moderate Risk<br>             <b>רוח:</b> 11.8 קשר<br>         </div>         </div>`)[0];
+                popup_7962b500533deea7b6fdc77f77bad8ab.setContent(html_f5e75eb79fc9a94b7b00a269220db169);
+            
+        
+
+        circle_marker_e009f073024e5679e4cdd048300c7f4f.bindPopup(popup_7962b500533deea7b6fdc77f77bad8ab)
+        ;
+
+        
+    
+    
+            var circle_marker_a93c4c34fa0738b91488c4eead154dc6 = L.circleMarker(
+                [32.8, 34.7],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_86465d7b8a242e122fbe9539b5aa5550 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e8a973a42552ba339e81a7015aad16b4 = $(`<div id="html_e8a973a42552ba339e81a7015aad16b4" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 20</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-25<br>             <b>סיכון:</b> Moderate Risk<br>             <b>רוח:</b> 15.1 קשר<br>         </div>         </div>`)[0];
+                popup_86465d7b8a242e122fbe9539b5aa5550.setContent(html_e8a973a42552ba339e81a7015aad16b4);
+            
+        
+
+        circle_marker_a93c4c34fa0738b91488c4eead154dc6.bindPopup(popup_86465d7b8a242e122fbe9539b5aa5550)
+        ;
+
+        
+    
+    
+            var circle_marker_782ad3a75d573c545957d195e8a73a04 = L.circleMarker(
+                [32.9, 34.7],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_1c59b788bf79719ddb0b84666d93a0b8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_790165f4bfa69e53281b5b1a7da54da2 = $(`<div id="html_790165f4bfa69e53281b5b1a7da54da2" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 21</b><br>             <hr style="margin: 5px 0;">                          <b>סיכון:</b> N/A<br>             <b>רוח:</b> 0.0 קשר<br>         </div>         </div>`)[0];
+                popup_1c59b788bf79719ddb0b84666d93a0b8.setContent(html_790165f4bfa69e53281b5b1a7da54da2);
+            
+        
+
+        circle_marker_782ad3a75d573c545957d195e8a73a04.bindPopup(popup_1c59b788bf79719ddb0b84666d93a0b8)
+        ;
+
+        
+    
+    
+            var circle_marker_219a98e7a58945c78323be345200d9c9 = L.circleMarker(
+                [33.0, 34.7],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_e022ec9ef05a025b6716df86ad18632d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_93af553af615cc6cddf8b824f752b836 = $(`<div id="html_93af553af615cc6cddf8b824f752b836" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 22</b><br>             <hr style="margin: 5px 0;">                          <b>סיכון:</b> N/A<br>             <b>רוח:</b> 0.0 קשר<br>         </div>         </div>`)[0];
+                popup_e022ec9ef05a025b6716df86ad18632d.setContent(html_93af553af615cc6cddf8b824f752b836);
+            
+        
+
+        circle_marker_219a98e7a58945c78323be345200d9c9.bindPopup(popup_e022ec9ef05a025b6716df86ad18632d)
+        ;
+
+        
+    
+    
+            var circle_marker_044998975e45b5d5334e4530db656bda = L.circleMarker(
+                [33.1, 34.7],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_ce245eb394c2d200af1ca0632ee9bfea = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_eeb2ea7536e9b2900146bb474c99ad71 = $(`<div id="html_eeb2ea7536e9b2900146bb474c99ad71" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 23</b><br>             <hr style="margin: 5px 0;">                          <b>סיכון:</b> N/A<br>             <b>רוח:</b> 0.0 קשר<br>         </div>         </div>`)[0];
+                popup_ce245eb394c2d200af1ca0632ee9bfea.setContent(html_eeb2ea7536e9b2900146bb474c99ad71);
+            
+        
+
+        circle_marker_044998975e45b5d5334e4530db656bda.bindPopup(popup_ce245eb394c2d200af1ca0632ee9bfea)
+        ;
+
+        
+    
+    
+            var circle_marker_230e74f818a15b9b8cbc0a3a5e83b22f = L.circleMarker(
+                [33.2, 34.7],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_968c9490b22ab1476b85e09a41ffb159 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_174b14c2a6eb1419445ea9e9ee9f3846 = $(`<div id="html_174b14c2a6eb1419445ea9e9ee9f3846" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 24</b><br>             <hr style="margin: 5px 0;">                          <b>סיכון:</b> N/A<br>             <b>רוח:</b> 0.0 קשר<br>         </div>         </div>`)[0];
+                popup_968c9490b22ab1476b85e09a41ffb159.setContent(html_174b14c2a6eb1419445ea9e9ee9f3846);
+            
+        
+
+        circle_marker_230e74f818a15b9b8cbc0a3a5e83b22f.bindPopup(popup_968c9490b22ab1476b85e09a41ffb159)
+        ;
+
+        
+    
+    
+            var circle_marker_221c862149cf48715b857faecaaa7396 = L.circleMarker(
+                [33.3, 34.7],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_ab74118f9151a8adeb7eb8cc94f882f1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c702732ae6336115d3b2566dfb8cf55b = $(`<div id="html_c702732ae6336115d3b2566dfb8cf55b" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 25</b><br>             <hr style="margin: 5px 0;">                          <b>סיכון:</b> N/A<br>             <b>רוח:</b> 0.0 קשר<br>         </div>         </div>`)[0];
+                popup_ab74118f9151a8adeb7eb8cc94f882f1.setContent(html_c702732ae6336115d3b2566dfb8cf55b);
+            
+        
+
+        circle_marker_221c862149cf48715b857faecaaa7396.bindPopup(popup_ab74118f9151a8adeb7eb8cc94f882f1)
+        ;
+
+        
+    
+    
+            var circle_marker_6d647b926815d76225ad66b73d4e1123 = L.circleMarker(
+                [33.4, 34.7],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_0771a1a096b95d483d747b02a1b159ce = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1d57ad991d2e2d265d06948c5d895384 = $(`<div id="html_1d57ad991d2e2d265d06948c5d895384" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 26</b><br>             <hr style="margin: 5px 0;">                          <b>סיכון:</b> N/A<br>             <b>רוח:</b> 0.0 קשר<br>         </div>         </div>`)[0];
+                popup_0771a1a096b95d483d747b02a1b159ce.setContent(html_1d57ad991d2e2d265d06948c5d895384);
+            
+        
+
+        circle_marker_6d647b926815d76225ad66b73d4e1123.bindPopup(popup_0771a1a096b95d483d747b02a1b159ce)
+        ;
+
+        
+    
+    
+            var circle_marker_0e3b641d8127bc51d4096692479a819c = L.circleMarker(
+                [33.5, 34.7],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_5c6ab937723897706075a52cb1d0b55a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8480b844e4d4e5705da10f7b424812d8 = $(`<div id="html_8480b844e4d4e5705da10f7b424812d8" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 27</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-19<br>             <b>סיכון:</b> Moderate Risk<br>             <b>רוח:</b> 17.6 קשר<br>         </div>         </div>`)[0];
+                popup_5c6ab937723897706075a52cb1d0b55a.setContent(html_8480b844e4d4e5705da10f7b424812d8);
+            
+        
+
+        circle_marker_0e3b641d8127bc51d4096692479a819c.bindPopup(popup_5c6ab937723897706075a52cb1d0b55a)
+        ;
+
+        
+    
+    
+            var circle_marker_5cb4e4c25ba03fa828b18ee191eeb7f5 = L.circleMarker(
+                [33.5, 34.7],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_869891b4d68fe61e4c5d66baa71c00be = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_74c5b2ac49dd7301d8610a63d63c0c49 = $(`<div id="html_74c5b2ac49dd7301d8610a63d63c0c49" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 28</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-20<br>             <b>סיכון:</b> High Risk<br>             <b>רוח:</b> 23.4 קשר<br>         </div>         </div>`)[0];
+                popup_869891b4d68fe61e4c5d66baa71c00be.setContent(html_74c5b2ac49dd7301d8610a63d63c0c49);
+            
+        
+
+        circle_marker_5cb4e4c25ba03fa828b18ee191eeb7f5.bindPopup(popup_869891b4d68fe61e4c5d66baa71c00be)
+        ;
+
+        
+    
+    
+            var circle_marker_ea6380da3eb1bd756539f3475c49cb96 = L.circleMarker(
+                [33.5, 34.7],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_ac40dfb5d803dc698557b4c6ecd45c33 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7c70eb3712b102fb9ff77454ea3baaef = $(`<div id="html_7c70eb3712b102fb9ff77454ea3baaef" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 29</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-21<br>             <b>סיכון:</b> High Risk<br>             <b>רוח:</b> 24.3 קשר<br>         </div>         </div>`)[0];
+                popup_ac40dfb5d803dc698557b4c6ecd45c33.setContent(html_7c70eb3712b102fb9ff77454ea3baaef);
+            
+        
+
+        circle_marker_ea6380da3eb1bd756539f3475c49cb96.bindPopup(popup_ac40dfb5d803dc698557b4c6ecd45c33)
+        ;
+
+        
+    
+    
+            var circle_marker_6ac4c32d3db2ff7b30947b3926e40e98 = L.circleMarker(
+                [33.5, 34.7],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_bfd89e0a0b3a2def5a88b95969696bde = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_41364a27dd665afb8379eec71decaf63 = $(`<div id="html_41364a27dd665afb8379eec71decaf63" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 30</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-22<br>             <b>סיכון:</b> High Risk<br>             <b>רוח:</b> 19.2 קשר<br>         </div>         </div>`)[0];
+                popup_bfd89e0a0b3a2def5a88b95969696bde.setContent(html_41364a27dd665afb8379eec71decaf63);
+            
+        
+
+        circle_marker_6ac4c32d3db2ff7b30947b3926e40e98.bindPopup(popup_bfd89e0a0b3a2def5a88b95969696bde)
+        ;
+
+        
+    
+    
+            var circle_marker_6720df1f70fbb87d8c13ab517863272b = L.circleMarker(
+                [33.5, 34.7],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_383bd382246b22b7db3846b7947a0d75 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7f743f4c79a2fec7d151d98fb60f1ecb = $(`<div id="html_7f743f4c79a2fec7d151d98fb60f1ecb" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 31</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-23<br>             <b>סיכון:</b> Moderate Risk<br>             <b>רוח:</b> 15.3 קשר<br>         </div>         </div>`)[0];
+                popup_383bd382246b22b7db3846b7947a0d75.setContent(html_7f743f4c79a2fec7d151d98fb60f1ecb);
+            
+        
+
+        circle_marker_6720df1f70fbb87d8c13ab517863272b.bindPopup(popup_383bd382246b22b7db3846b7947a0d75)
+        ;
+
+        
+    
+    
+            var circle_marker_fa1f9bf95d796edbd87d948498326c47 = L.circleMarker(
+                [33.5, 34.7],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_77f7ed76ad7892fb3e19e032431c6ae7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_176cf6bc6e9dd3b90e7521e955ab46c8 = $(`<div id="html_176cf6bc6e9dd3b90e7521e955ab46c8" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 32</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-24<br>             <b>סיכון:</b> High Risk<br>             <b>רוח:</b> 24.5 קשר<br>         </div>         </div>`)[0];
+                popup_77f7ed76ad7892fb3e19e032431c6ae7.setContent(html_176cf6bc6e9dd3b90e7521e955ab46c8);
+            
+        
+
+        circle_marker_fa1f9bf95d796edbd87d948498326c47.bindPopup(popup_77f7ed76ad7892fb3e19e032431c6ae7)
+        ;
+
+        
+    
+    
+            var circle_marker_0aa2541d54b41f6351b2ec3cd566d07e = L.circleMarker(
+                [33.5, 34.7],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_ae2514a7568cbfb2424a95faa6c98672 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f6a7da6deef9470dd105e6edd629aa0b = $(`<div id="html_f6a7da6deef9470dd105e6edd629aa0b" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 33</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-25<br>             <b>סיכון:</b> High Risk<br>             <b>רוח:</b> 26.2 קשר<br>         </div>         </div>`)[0];
+                popup_ae2514a7568cbfb2424a95faa6c98672.setContent(html_f6a7da6deef9470dd105e6edd629aa0b);
+            
+        
+
+        circle_marker_0aa2541d54b41f6351b2ec3cd566d07e.bindPopup(popup_ae2514a7568cbfb2424a95faa6c98672)
+        ;
+
+        
+    
+    
+            var circle_marker_8cc1faa8d24c3e3fc7ffab5514279700 = L.circleMarker(
+                [33.6, 34.7],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_2b25013d7040bd26c6b3acefc0be0b98 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e993dbb472cae1e8841d1d1a66f7ba4a = $(`<div id="html_e993dbb472cae1e8841d1d1a66f7ba4a" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 34</b><br>             <hr style="margin: 5px 0;">                          <b>סיכון:</b> N/A<br>             <b>רוח:</b> 0.0 קשר<br>         </div>         </div>`)[0];
+                popup_2b25013d7040bd26c6b3acefc0be0b98.setContent(html_e993dbb472cae1e8841d1d1a66f7ba4a);
+            
+        
+
+        circle_marker_8cc1faa8d24c3e3fc7ffab5514279700.bindPopup(popup_2b25013d7040bd26c6b3acefc0be0b98)
+        ;
+
+        
+    
+    
+            var circle_marker_3377e098cf99d4feb530af2afeefbe87 = L.circleMarker(
+                [33.7, 34.7],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_9ffa50d4dc0a5871addb1f5f7bfabde6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ba7c25b2f6153c30b8377e76455e268d = $(`<div id="html_ba7c25b2f6153c30b8377e76455e268d" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 35</b><br>             <hr style="margin: 5px 0;">                          <b>סיכון:</b> N/A<br>             <b>רוח:</b> 0.0 קשר<br>         </div>         </div>`)[0];
+                popup_9ffa50d4dc0a5871addb1f5f7bfabde6.setContent(html_ba7c25b2f6153c30b8377e76455e268d);
+            
+        
+
+        circle_marker_3377e098cf99d4feb530af2afeefbe87.bindPopup(popup_9ffa50d4dc0a5871addb1f5f7bfabde6)
+        ;
+
+        
+    
+    
+            var circle_marker_2da920f6496a176e462eac0f862ba23d = L.circleMarker(
+                [33.8, 34.7],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_62ea480a1fafa8a51e7106736e3f0d32 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5049c06154b15b725a3c250765873d2c = $(`<div id="html_5049c06154b15b725a3c250765873d2c" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 36</b><br>             <hr style="margin: 5px 0;">                          <b>סיכון:</b> N/A<br>             <b>רוח:</b> 0.0 קשר<br>         </div>         </div>`)[0];
+                popup_62ea480a1fafa8a51e7106736e3f0d32.setContent(html_5049c06154b15b725a3c250765873d2c);
+            
+        
+
+        circle_marker_2da920f6496a176e462eac0f862ba23d.bindPopup(popup_62ea480a1fafa8a51e7106736e3f0d32)
+        ;
+
+        
+    
+    
+            var circle_marker_8981655a9c86bbdaa136db84944de054 = L.circleMarker(
+                [33.9, 34.7],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_de5c78b43bf86967157596948a0c91ab = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_85ed1ded7fa105a7bffc4ec39e2ec228 = $(`<div id="html_85ed1ded7fa105a7bffc4ec39e2ec228" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 37</b><br>             <hr style="margin: 5px 0;">                          <b>סיכון:</b> N/A<br>             <b>רוח:</b> 0.0 קשר<br>         </div>         </div>`)[0];
+                popup_de5c78b43bf86967157596948a0c91ab.setContent(html_85ed1ded7fa105a7bffc4ec39e2ec228);
+            
+        
+
+        circle_marker_8981655a9c86bbdaa136db84944de054.bindPopup(popup_de5c78b43bf86967157596948a0c91ab)
+        ;
+
+        
+    
+    
+            var circle_marker_cb59ba673841e74720c15ed1ce4d34a6 = L.circleMarker(
+                [34.0, 34.6],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_e7099e936bd471a816e106f6576abd08 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bd3acbb4e8d8e924b69e9c585f652893 = $(`<div id="html_bd3acbb4e8d8e924b69e9c585f652893" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 38</b><br>             <hr style="margin: 5px 0;">                          <b>סיכון:</b> N/A<br>             <b>רוח:</b> 0.0 קשר<br>         </div>         </div>`)[0];
+                popup_e7099e936bd471a816e106f6576abd08.setContent(html_bd3acbb4e8d8e924b69e9c585f652893);
+            
+        
+
+        circle_marker_cb59ba673841e74720c15ed1ce4d34a6.bindPopup(popup_e7099e936bd471a816e106f6576abd08)
+        ;
+
+        
+    
+    
+            var circle_marker_b290ac6c055fe17854893f8f7621042b = L.circleMarker(
+                [34.1, 34.5],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_2a4c9c9f9e9ed8ac3ad3dc2b66784687 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ce399b1a038db1e83527df01cc331ee3 = $(`<div id="html_ce399b1a038db1e83527df01cc331ee3" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 39</b><br>             <hr style="margin: 5px 0;">                          <b>סיכון:</b> N/A<br>             <b>רוח:</b> 0.0 קשר<br>         </div>         </div>`)[0];
+                popup_2a4c9c9f9e9ed8ac3ad3dc2b66784687.setContent(html_ce399b1a038db1e83527df01cc331ee3);
+            
+        
+
+        circle_marker_b290ac6c055fe17854893f8f7621042b.bindPopup(popup_2a4c9c9f9e9ed8ac3ad3dc2b66784687)
+        ;
+
+        
+    
+    
+            var circle_marker_1f3e2c45d8290fdf7cc910cb71203bf5 = L.circleMarker(
+                [34.2, 34.4],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_5699dda477498909349d22a14cf5ef36 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_37cec05b379992c67907d0877cbd0936 = $(`<div id="html_37cec05b379992c67907d0877cbd0936" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 40</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-19<br>             <b>סיכון:</b> Moderate Risk<br>             <b>רוח:</b> 15.6 קשר<br>         </div>         </div>`)[0];
+                popup_5699dda477498909349d22a14cf5ef36.setContent(html_37cec05b379992c67907d0877cbd0936);
+            
+        
+
+        circle_marker_1f3e2c45d8290fdf7cc910cb71203bf5.bindPopup(popup_5699dda477498909349d22a14cf5ef36)
+        ;
+
+        
+    
+    
+            var circle_marker_ef21dd2da1df17c9cf4648b601787d06 = L.circleMarker(
+                [34.2, 34.4],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_70a4408d36abb9531ca07bfd143ef973 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ddac273e8588fea913f53ae6a693f97a = $(`<div id="html_ddac273e8588fea913f53ae6a693f97a" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 41</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-20<br>             <b>סיכון:</b> High Risk<br>             <b>רוח:</b> 21.1 קשר<br>         </div>         </div>`)[0];
+                popup_70a4408d36abb9531ca07bfd143ef973.setContent(html_ddac273e8588fea913f53ae6a693f97a);
+            
+        
+
+        circle_marker_ef21dd2da1df17c9cf4648b601787d06.bindPopup(popup_70a4408d36abb9531ca07bfd143ef973)
+        ;
+
+        
+    
+    
+            var circle_marker_64511a27b46e7ce6d0bbaf0a08468b09 = L.circleMarker(
+                [34.2, 34.4],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_639f46685dcbd3ff95d9fa30f9847386 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e307076c23dd8f3a4ce3f78391a5e9e3 = $(`<div id="html_e307076c23dd8f3a4ce3f78391a5e9e3" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 42</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-21<br>             <b>סיכון:</b> High Risk<br>             <b>רוח:</b> 25.1 קשר<br>         </div>         </div>`)[0];
+                popup_639f46685dcbd3ff95d9fa30f9847386.setContent(html_e307076c23dd8f3a4ce3f78391a5e9e3);
+            
+        
+
+        circle_marker_64511a27b46e7ce6d0bbaf0a08468b09.bindPopup(popup_639f46685dcbd3ff95d9fa30f9847386)
+        ;
+
+        
+    
+    
+            var circle_marker_7d71a6d1cd964b9fb2835097fd44ecdf = L.circleMarker(
+                [34.2, 34.4],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_f458be46b8100ce7765ef38bd9d8433b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7627aad1bf811c7b115b15f0593a5575 = $(`<div id="html_7627aad1bf811c7b115b15f0593a5575" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 43</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-22<br>             <b>סיכון:</b> Moderate Risk<br>             <b>רוח:</b> 14.8 קשר<br>         </div>         </div>`)[0];
+                popup_f458be46b8100ce7765ef38bd9d8433b.setContent(html_7627aad1bf811c7b115b15f0593a5575);
+            
+        
+
+        circle_marker_7d71a6d1cd964b9fb2835097fd44ecdf.bindPopup(popup_f458be46b8100ce7765ef38bd9d8433b)
+        ;
+
+        
+    
+    
+            var circle_marker_9703e3dcd82bb8971f6e3229f9ab6cab = L.circleMarker(
+                [34.2, 34.4],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_fd44ff59cdbb4b613dc1f7ec4029a833 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fe3ef7c244aee44712c7b6e7b560cd3d = $(`<div id="html_fe3ef7c244aee44712c7b6e7b560cd3d" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 44</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-23<br>             <b>סיכון:</b> Moderate Risk<br>             <b>רוח:</b> 13.8 קשר<br>         </div>         </div>`)[0];
+                popup_fd44ff59cdbb4b613dc1f7ec4029a833.setContent(html_fe3ef7c244aee44712c7b6e7b560cd3d);
+            
+        
+
+        circle_marker_9703e3dcd82bb8971f6e3229f9ab6cab.bindPopup(popup_fd44ff59cdbb4b613dc1f7ec4029a833)
+        ;
+
+        
+    
+    
+            var circle_marker_7364edd518969b1e109dd7f08c6f029b = L.circleMarker(
+                [34.2, 34.4],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_ced20645a3796d84ba528ca8050d68c5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1eaaa1bd9629e2c5bce2b2318d14940d = $(`<div id="html_1eaaa1bd9629e2c5bce2b2318d14940d" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 45</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-24<br>             <b>סיכון:</b> Moderate Risk<br>             <b>רוח:</b> 19.3 קשר<br>         </div>         </div>`)[0];
+                popup_ced20645a3796d84ba528ca8050d68c5.setContent(html_1eaaa1bd9629e2c5bce2b2318d14940d);
+            
+        
+
+        circle_marker_7364edd518969b1e109dd7f08c6f029b.bindPopup(popup_ced20645a3796d84ba528ca8050d68c5)
+        ;
+
+        
+    
+    
+            var circle_marker_65f79d127c37231b0e2506727f8fc126 = L.circleMarker(
+                [34.2, 34.4],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_458f2a5cece2ad75534983bd02f6deb3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6a3270dfad2e83783dac9ee59d461591 = $(`<div id="html_6a3270dfad2e83783dac9ee59d461591" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 46</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-25<br>             <b>סיכון:</b> High Risk<br>             <b>רוח:</b> 21.6 קשר<br>         </div>         </div>`)[0];
+                popup_458f2a5cece2ad75534983bd02f6deb3.setContent(html_6a3270dfad2e83783dac9ee59d461591);
+            
+        
+
+        circle_marker_65f79d127c37231b0e2506727f8fc126.bindPopup(popup_458f2a5cece2ad75534983bd02f6deb3)
+        ;
+
+        
+    
+    
+            var circle_marker_9f991746eb01d9ee3173f1dab013667a = L.circleMarker(
+                [34.3, 34.3],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_a14d95c559065dc38081dbb3bfe46c92 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2e37cea25c9799419f78466bfecf9c3d = $(`<div id="html_2e37cea25c9799419f78466bfecf9c3d" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 47</b><br>             <hr style="margin: 5px 0;">                          <b>סיכון:</b> N/A<br>             <b>רוח:</b> 0.0 קשר<br>         </div>         </div>`)[0];
+                popup_a14d95c559065dc38081dbb3bfe46c92.setContent(html_2e37cea25c9799419f78466bfecf9c3d);
+            
+        
+
+        circle_marker_9f991746eb01d9ee3173f1dab013667a.bindPopup(popup_a14d95c559065dc38081dbb3bfe46c92)
+        ;
+
+        
+    
+    
+            var circle_marker_1a1bec5e9cc842808222bce0117ea1dc = L.circleMarker(
+                [34.4, 34.2],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_2b2571355d5afe9883adeec6ade9a6fc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cdfc8843fc35957d8be7360d0a047048 = $(`<div id="html_cdfc8843fc35957d8be7360d0a047048" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 48</b><br>             <hr style="margin: 5px 0;">                          <b>סיכון:</b> N/A<br>             <b>רוח:</b> 0.0 קשר<br>         </div>         </div>`)[0];
+                popup_2b2571355d5afe9883adeec6ade9a6fc.setContent(html_cdfc8843fc35957d8be7360d0a047048);
+            
+        
+
+        circle_marker_1a1bec5e9cc842808222bce0117ea1dc.bindPopup(popup_2b2571355d5afe9883adeec6ade9a6fc)
+        ;
+
+        
+    
+    
+            var circle_marker_a48c139415c87a145ce772b09fc9e113 = L.circleMarker(
+                [34.5, 34.1],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_7e70af72476fec32e37d7bb95ffd0cfd = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_af4ad875f074d06330a76fd386feb80e = $(`<div id="html_af4ad875f074d06330a76fd386feb80e" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 49</b><br>             <hr style="margin: 5px 0;">                          <b>סיכון:</b> N/A<br>             <b>רוח:</b> 0.0 קשר<br>         </div>         </div>`)[0];
+                popup_7e70af72476fec32e37d7bb95ffd0cfd.setContent(html_af4ad875f074d06330a76fd386feb80e);
+            
+        
+
+        circle_marker_a48c139415c87a145ce772b09fc9e113.bindPopup(popup_7e70af72476fec32e37d7bb95ffd0cfd)
+        ;
+
+        
+    
+    
+            var circle_marker_2031ea6ed1fe128ee556eff303a31e17 = L.circleMarker(
+                [34.6, 34.0],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_8ada51bde0d004912fb1e068d0629cd2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_837ee911a781e77e592d3728a860690a = $(`<div id="html_837ee911a781e77e592d3728a860690a" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 50</b><br>             <hr style="margin: 5px 0;">                          <b>סיכון:</b> N/A<br>             <b>רוח:</b> 0.0 קשר<br>         </div>         </div>`)[0];
+                popup_8ada51bde0d004912fb1e068d0629cd2.setContent(html_837ee911a781e77e592d3728a860690a);
+            
+        
+
+        circle_marker_2031ea6ed1fe128ee556eff303a31e17.bindPopup(popup_8ada51bde0d004912fb1e068d0629cd2)
+        ;
+
+        
+    
+    
+            var circle_marker_24261e00af989d5061026108b38cb242 = L.circleMarker(
+                [34.7, 33.9],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_8315ee2d5d197e7f1bff4f542b195d0b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_55f6079be2ac103f3533fba278fa6e7e = $(`<div id="html_55f6079be2ac103f3533fba278fa6e7e" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 51</b><br>             <hr style="margin: 5px 0;">                          <b>סיכון:</b> N/A<br>             <b>רוח:</b> 0.0 קשר<br>         </div>         </div>`)[0];
+                popup_8315ee2d5d197e7f1bff4f542b195d0b.setContent(html_55f6079be2ac103f3533fba278fa6e7e);
+            
+        
+
+        circle_marker_24261e00af989d5061026108b38cb242.bindPopup(popup_8315ee2d5d197e7f1bff4f542b195d0b)
+        ;
+
+        
+    
+    
+            var circle_marker_685a14cd20351ed4d6c02ce8ab3468e8 = L.circleMarker(
+                [34.8, 33.8],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_cf5595f2296bed878b784c675d57d809 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9210ff05b83425290fca5c1bcf058564 = $(`<div id="html_9210ff05b83425290fca5c1bcf058564" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 52</b><br>             <hr style="margin: 5px 0;">                          <b>סיכון:</b> N/A<br>             <b>רוח:</b> 0.0 קשר<br>         </div>         </div>`)[0];
+                popup_cf5595f2296bed878b784c675d57d809.setContent(html_9210ff05b83425290fca5c1bcf058564);
+            
+        
+
+        circle_marker_685a14cd20351ed4d6c02ce8ab3468e8.bindPopup(popup_cf5595f2296bed878b784c675d57d809)
+        ;
+
+        
+    
+    
+            var circle_marker_4ab1cdc139c80bd0b3cf45f291b8b53e = L.circleMarker(
+                [34.9, 33.7],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_c1f5ec3a8947cc25d366e89e86e743e6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a3a49d4e1d9e668983c6e670b7df27ab = $(`<div id="html_a3a49d4e1d9e668983c6e670b7df27ab" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 53</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-19<br>             <b>סיכון:</b> Moderate Risk<br>             <b>רוח:</b> 6.4 קשר<br>         </div>         </div>`)[0];
+                popup_c1f5ec3a8947cc25d366e89e86e743e6.setContent(html_a3a49d4e1d9e668983c6e670b7df27ab);
+            
+        
+
+        circle_marker_4ab1cdc139c80bd0b3cf45f291b8b53e.bindPopup(popup_c1f5ec3a8947cc25d366e89e86e743e6)
+        ;
+
+        
+    
+    
+            var circle_marker_bc552623740a1439037df36c6fb30dd2 = L.circleMarker(
+                [34.9, 33.7],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_c5c1c5e38edec4cfc8e06be1bceaba13 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5b5d62477754491ae69c785d8f160e58 = $(`<div id="html_5b5d62477754491ae69c785d8f160e58" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 54</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-20<br>             <b>סיכון:</b> Moderate Risk<br>             <b>רוח:</b> 13.7 קשר<br>         </div>         </div>`)[0];
+                popup_c5c1c5e38edec4cfc8e06be1bceaba13.setContent(html_5b5d62477754491ae69c785d8f160e58);
+            
+        
+
+        circle_marker_bc552623740a1439037df36c6fb30dd2.bindPopup(popup_c5c1c5e38edec4cfc8e06be1bceaba13)
+        ;
+
+        
+    
+    
+            var circle_marker_7bbddee8f9411a24a80b7c6303ab7fff = L.circleMarker(
+                [34.9, 33.7],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_86081f2ba5a76ce64361418c14a6b94b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_199e427fdf602b855e6623e195afef6a = $(`<div id="html_199e427fdf602b855e6623e195afef6a" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 55</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-21<br>             <b>סיכון:</b> Moderate Risk<br>             <b>רוח:</b> 14.2 קשר<br>         </div>         </div>`)[0];
+                popup_86081f2ba5a76ce64361418c14a6b94b.setContent(html_199e427fdf602b855e6623e195afef6a);
+            
+        
+
+        circle_marker_7bbddee8f9411a24a80b7c6303ab7fff.bindPopup(popup_86081f2ba5a76ce64361418c14a6b94b)
+        ;
+
+        
+    
+    
+            var circle_marker_0d759866f6bd7bc552765dad4c469483 = L.circleMarker(
+                [34.9, 33.7],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_07e7782b53ac021011cb9329bf855b95 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ea17b29d5680bb5062e37dfb4279c439 = $(`<div id="html_ea17b29d5680bb5062e37dfb4279c439" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 56</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-22<br>             <b>סיכון:</b> Low Risk<br>             <b>רוח:</b> 6.1 קשר<br>         </div>         </div>`)[0];
+                popup_07e7782b53ac021011cb9329bf855b95.setContent(html_ea17b29d5680bb5062e37dfb4279c439);
+            
+        
+
+        circle_marker_0d759866f6bd7bc552765dad4c469483.bindPopup(popup_07e7782b53ac021011cb9329bf855b95)
+        ;
+
+        
+    
+    
+            var circle_marker_0254c6e2800f2fd4ee109e849200c210 = L.circleMarker(
+                [34.9, 33.7],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_56ea3786f060eb7b09676b31e121fcb2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c9c4c136aaca1f68c9b8cca90de217cb = $(`<div id="html_c9c4c136aaca1f68c9b8cca90de217cb" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 57</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-23<br>             <b>סיכון:</b> Low Risk<br>             <b>רוח:</b> 8.1 קשר<br>         </div>         </div>`)[0];
+                popup_56ea3786f060eb7b09676b31e121fcb2.setContent(html_c9c4c136aaca1f68c9b8cca90de217cb);
+            
+        
+
+        circle_marker_0254c6e2800f2fd4ee109e849200c210.bindPopup(popup_56ea3786f060eb7b09676b31e121fcb2)
+        ;
+
+        
+    
+    
+            var circle_marker_521169e1d847e9c62771ac2c88df3ed5 = L.circleMarker(
+                [34.9, 33.7],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_676c5c7aa93fcd78645715d834179367 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b18352f9a4b59c1b28f09586c7d11d37 = $(`<div id="html_b18352f9a4b59c1b28f09586c7d11d37" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 58</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-24<br>             <b>סיכון:</b> Moderate Risk<br>             <b>רוח:</b> 9.1 קשר<br>         </div>         </div>`)[0];
+                popup_676c5c7aa93fcd78645715d834179367.setContent(html_b18352f9a4b59c1b28f09586c7d11d37);
+            
+        
+
+        circle_marker_521169e1d847e9c62771ac2c88df3ed5.bindPopup(popup_676c5c7aa93fcd78645715d834179367)
+        ;
+
+        
+    
+    
+            var circle_marker_b02a436ef3b790e4e7cc456551d24f3a = L.circleMarker(
+                [34.9, 33.7],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
+        
+    
+        var popup_e4d3e2778a7c8a577379a82a6ea8ddc6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9174994f2585ac66a41159aad48ce0c4 = $(`<div id="html_9174994f2585ac66a41159aad48ce0c4" style="width: 100.0%; height: 100.0%;">         <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 180px;">             <b style="color: #1565c0;">נקודה: 59</b><br>             <hr style="margin: 5px 0;">             <b>תאריך:</b> 2026-03-25<br>             <b>סיכון:</b> Low Risk<br>             <b>רוח:</b> 6.4 קשר<br>         </div>         </div>`)[0];
+                popup_e4d3e2778a7c8a577379a82a6ea8ddc6.setContent(html_9174994f2585ac66a41159aad48ce0c4);
+            
+        
+
+        circle_marker_b02a436ef3b790e4e7cc456551d24f3a.bindPopup(popup_e4d3e2778a7c8a577379a82a6ea8ddc6)
+        ;
+
+        
+    
+    
+            var poly_line_0c4bb28924c38452cfbd7b7f180c80fb = L.polyline(
+                [[32.1, 34.7], [32.1, 34.7], [32.1, 34.7], [32.1, 34.7], [32.1, 34.7], [32.1, 34.7], [32.1, 34.7], [32.2, 34.7], [32.3, 34.7], [32.4, 34.7], [32.5, 34.7], [32.6, 34.7], [32.7, 34.7], [32.8, 34.7], [32.8, 34.7], [32.8, 34.7], [32.8, 34.7], [32.8, 34.7], [32.8, 34.7], [32.8, 34.7], [32.9, 34.7], [33.0, 34.7], [33.1, 34.7], [33.2, 34.7], [33.3, 34.7], [33.4, 34.7], [33.5, 34.7], [33.5, 34.7], [33.5, 34.7], [33.5, 34.7], [33.5, 34.7], [33.5, 34.7], [33.5, 34.7], [33.6, 34.7], [33.7, 34.7], [33.8, 34.7], [33.9, 34.7], [34.0, 34.6], [34.1, 34.5], [34.2, 34.4], [34.2, 34.4], [34.2, 34.4], [34.2, 34.4], [34.2, 34.4], [34.2, 34.4], [34.2, 34.4], [34.3, 34.3], [34.4, 34.2], [34.5, 34.1], [34.6, 34.0], [34.7, 33.9], [34.8, 33.8], [34.9, 33.7], [34.9, 33.7], [34.9, 33.7], [34.9, 33.7], [34.9, 33.7], [34.9, 33.7], [34.9, 33.7]],
                 {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.3, "smoothFactor": 1.0, "stroke": true, "weight": 1}
-            ).addTo(map_4de10321fc65cd089cf77823ef162c95);
+            ).addTo(map_38dda3448f2413620903c3575d4e1615);
         
 </script>
 </html>
