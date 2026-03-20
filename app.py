@@ -1,160 +1,175 @@
 import streamlit as st
-from streamlit_folium import st_folium
-import folium
 import pandas as pd
+import folium
+from streamlit_folium import st_folium
 
+# ייבוא המרחק - הגנה מפני קריסה
+try:
+    from main import dist
+except Exception:
+    dist = "N/A"
+
+# --- 1. הגדרות דף ---
 st.set_page_config(layout="wide", page_title="Sailing Risk Advisor")
 
-# --- מאגר נמלים פוטנציאליים ---
-PORTS = {
-    "Tel Aviv": {"lat": 32.0853, "lon": 34.7818, "icon": "anchor"},
-    "Limassol": {"lat": 34.6750, "lon": 33.0440, "icon": "flag"},
-    "Haifa": {"lat": 32.8192, "lon": 34.9992, "icon": "anchor"},
-    "Larnaca": {"lat": 34.9173, "lon": 33.6427, "icon": "flag"},
-    "Rhodes": {"lat": 36.4452, "lon": 28.2277, "icon": "sun"}
+# --- 2. CSS לעברית ---
+st.markdown("""
+    <style>
+    .rtl-text {
+        direction: rtl;
+        text-align: right;
+    }
+    .stMetric, .stAlert {
+        direction: rtl;
+        text-align: right;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+# --- 3. מאגר נמלים מקומי ---
+LOCAL_PORTS = {
+    "Tel Aviv": [32.0853, 34.7818],
+    "Haifa": [32.8192, 34.9992],
+    "Limassol": [34.6750, 33.0440],
+    "Larnaca": [34.9173, 33.6427],
+    "Rhodes": [36.4452, 28.2277]
 }
 
-st.title("⛵ Skipper's Route Advisor: Dynamic Planner")
-
-# --- 1. פונקציות עזר לטעינה ועיבוד ---
-
+# --- 4. טעינת נתונים ---
 @st.cache_data
-def load_and_prepare_data():
-    # טעינת ה-CSV המקורי
+def load_data():
     try:
-        df = pd.read_csv('sailing_route_forecast.csv', encoding='utf-8-sig')
+        df = pd.read_csv('sailing_route_forecast.csv')
         df.columns = df.columns.str.strip()
-        return df
+        df['lat'] = pd.to_numeric(df['lat'], errors='coerce')
+        df['lon'] = pd.to_numeric(df['lon'], errors='coerce')
+        df['date'] = df['date'].astype(str).str.strip()
+        return df.dropna(subset=['lat', 'lon'])
     except Exception as e:
-        st.error(f"שגיאה בטעינת הקובץ: {e}")
+        st.error(f"שגיאה בקריאת הקובץ: {e}")
         return pd.DataFrame()
 
-def get_risk_color(summary_text):
-    """קביעת צבע חסינה לערכי NaN או טקסט חסר"""
-    if pd.isna(summary_text) or summary_text is None:
-        return "blue"
-    val = str(summary_text).lower().strip()
-    if "high" in val: return "red"
-    elif "moderate" in val: return "orange"
-    elif "low" in val: return "green"
-    return "blue"
+df_raw = load_data()
 
-# --- 2. לוגיקת בחירה וסינון ---
+# --- 5. לוגיקת בחירה (Sidebar) ---
+if df_raw.empty:
+    st.error("לא נמצאו נתונים בקובץ CSV.")
+    st.stop()
 
-df_raw = load_and_prepare_data()
+# רשימת תאריכים ייחודיים (רק אלו עם מידע אמיתי)
+available_dates = sorted([d for d in df_raw['date'].unique() if d not in ['N/A', 'nan', 'None']])
 
-if not df_raw.empty:
-    # ניקוי תאריכים לטובת הסליידר (מניעת IndexError ו-TypeError)
-    valid_dates = df_raw['date'].dropna().unique()
-    available_dates = sorted([str(d) for d in valid_dates])
-
-    st.sidebar.header("תכנון מסלול")
+with st.sidebar:
+    st.header("📍 תכנון מסלול")
+    origin_city = st.selectbox("נמל מוצא:", list(LOCAL_PORTS.keys()), index=0)
+    dest_city = st.selectbox("נמל יעד:", list(LOCAL_PORTS.keys()), index=2)
     
-    # בחירת נמלים
-    origin_city = st.sidebar.selectbox("בחר נקודת מוצא:", options=list(PORTS.keys()), index=0)
-    destination_city = st.sidebar.selectbox("בחר יעד:", options=list(PORTS.keys()), index=1)
-
+    st.write("---")
+    st.write("**בחר תאריך לתחזית:**")
     if available_dates:
-        selected_date = st.sidebar.select_slider("תאריך הפלגה:", options=available_dates)
-        
-        # סינון הנתונים ליום הנבחר
-        filtered_df = df_raw[df_raw['date'] == selected_date].copy()
-        
-        # השלמת ערכים חסרים למניעת שגיאות ב-Popup
-        filtered_df['risk_summary'] = filtered_df['risk_summary'].fillna("No Forecast")
-        filtered_df['risk_score'] = filtered_df['risk_score'].fillna(0)
+        selected_date = st.radio("תאריכים זמינים:", options=available_dates, label_visibility="collapsed")
     else:
-        st.error("לא נמצאו תאריכים תקינים בקובץ הנתונים.")
-        filtered_df = pd.DataFrame()
-else:
-    st.warning("המתן לטעינת נתונים או בדוק את קובץ ה-CSV.")
-    filtered_df = pd.DataFrame()
+        st.warning("אין תאריכים זמינים.")
+        st.stop()
 
-# --- 3. יצירת המפה ---
+# --- 6. עיבוד הנתונים ---
+# לוקחים את כל הנקודות לצורך ציור המסלול המלא (17 נקודות)
+all_waypoints = df_raw.copy().sort_values('waypoint_id')
 
-def create_dynamic_map(df, start_city, end_city):
-    # מרכוז המפה (ברירת מחדל לאזור הים התיכון אם ה-DF ריק)
-    center_lat = df['lat'].mean() if not df.empty else 33.5
-    center_lon = df['lon'].mean() if not df.empty else 34.0
+# מסננים רק את הנקודות של היום הנבחר לטבלה ולפופאפים (5 נקודות)
+info_points = df_raw[df_raw['date'] == selected_date].copy().sort_values('waypoint_id')
+
+# --- 7. פונקציית יצירת המפה ---
+def create_map(full_path, date_str, start_city, end_city):
+    # מרכוז המפה
+    m = folium.Map(location=[full_path['lat'].mean(), full_path['lon'].mean()], 
+                   zoom_start=7, tiles="CartoDB positron")
     
-    m = folium.Map(location=[center_lat, center_lon], zoom_start=7, tiles="CartoDB positron")
+    # 1. ציור קו הנתיב המלא (כל הנקודות מחוברות)
+    path_coords = full_path[['lat', 'lon']].values.tolist()
+    folium.PolyLine(path_coords, color="#3498db", weight=2, opacity=0.5, dash_array='5').add_to(m)
     
-    # א. הוספת נקודת מוצא (עוגן)
-    s_info = PORTS[start_city]
-    folium.Marker(
-        location=[s_info['lat'], s_info['lon']],
-        popup=f"Origin: {start_city}",
-        icon=folium.Icon(color='blue', icon=s_info['icon'], prefix='fa')
-    ).add_to(m)
+    # 2. הוספת נקודות (Waypoints)
+    for _, row in full_path.iterrows():
+        is_current_forecast = (row['date'] == date_str)
+        
+        if is_current_forecast:
+            # נקודה עם מידע - גדולה וצבעונית
+            radius = 8
+            risk = str(row['risk_summary']).lower()
+            if "high" in risk: color = "#e74c3c"
+            elif "moderate" in risk: color = "#f39c12"
+            elif "low" in risk: color = "#2ecc71"
+            else: color = "#3498db"
+            
+            html = f"""
+            <div style="direction: rtl; text-align: right; font-family: sans-serif; font-size: 12px;">
+                <b style="color:{color};">נקודה {int(row['waypoint_id'])}</b><br>
+                <b>תחזית:</b> {row['risk_summary']}<br>
+                <b>רוח:</b> {row['wind_speed_kn']} קשר<br>
+                <b>מזג אוויר:</b> {row['weather']}
+            </div>
+            """
+            popup = folium.Popup(folium.Html(html, script=True), max_width=200)
+            opacity = 0.9
+        else:
+            # נקודת מסלול רגילה - קטנה וכחולה/אפורה
+            radius = 2
+            color = "#3498db"
+            popup = None
+            opacity = 0.4
 
-    # ב. הוספת נקודת יעד (דגל)
-    e_info = PORTS[end_city]
-    folium.Marker(
-        location=[e_info['lat'], e_info['lon']],
-        popup=f"Destination: {end_city}",
-        icon=folium.Icon(color='black', icon=e_info['icon'], prefix='fa')
-    ).add_to(m)
-
-    # ג. הוספת נקודות הדרך (Waypoints) מה-DataFrame
-    for _, row in df.iterrows():
-        m_color = get_risk_color(row.get('risk_summary', ''))
-        
-        # יצירת ה-Popup בצורה בטוחה
-        p_id = row.get('waypoint_id', '?')
-        p_risk = row.get('risk_summary', 'N/A')
-        p_wind = row.get('wind_speed_kn', 0)
-        
-        popup_html = f"""
-        <div style="direction: rtl; text-align: right; font-family: sans-serif; min-width: 150px;">
-            <b style="color: #1565c0;">נקודה: {p_id}</b><br>
-            <hr style="margin: 5px 0;">
-            <b>סיכון:</b> {p_risk}<br>
-            <b>רוח:</b> {p_wind} קשר
-        </div>
-        """
-        
         folium.CircleMarker(
             location=[row['lat'], row['lon']],
-            radius=8,
-            color=m_color,
+            radius=radius,
+            color=color,
             fill=True,
-            fill_color=m_color,
-            fill_opacity=0.7,
-            popup=folium.Popup(popup_html, max_width=300)
+            fill_opacity=opacity,
+            popup=popup
         ).add_to(m)
 
-    # ד. ציור קו הנתיב (רק אם יש נקודות)
-    if not df.empty:
-        points = df[['lat', 'lon']].values.tolist()
-        folium.PolyLine(points, color="blue", weight=2, opacity=0.4, dash_array='5').add_to(m)
-    
+    # 3. סמלי מוצא ויעד
+    for p_name, p_color in [(start_city, 'blue'), (end_city, 'black')]:
+        if p_name in LOCAL_PORTS:
+            folium.Marker(
+                location=LOCAL_PORTS[p_name], 
+                icon=folium.Icon(color=p_color, icon='anchor', prefix='fa'),
+                popup=p_name
+            ).add_to(m)
+
     return m
 
-# --- 4. תצוגה ראשית ---
+# --- 8. תצוגה ראשית ---
+st.markdown(f'<div class="rtl-text"><h2>נתיב הפלגה: {selected_date}</h2></div>', unsafe_allow_html=True)
 
-if not filtered_df.empty:
-    st.write(f"### הפלגה מ-{origin_city} ל-{destination_city} בתאריך {selected_date}")
-    
-    col1, col2 = st.columns([4, 1])
+col_map, col_info = st.columns([4, 1])
 
-    with col1:
-        # שימוש במפתח ייחודי שמתעדכן כדי לרענן את המפה בשינוי תאריך/עיר
-        map_key = f"map_{selected_date}_{origin_city}_{destination_city}"
-        st_folium(create_dynamic_map(filtered_df, origin_city, destination_city), 
-                  width=1000, height=600, key=map_key)
+with col_map:
+    # Key דינמי לרענון המפה
+    st_folium(create_map(all_waypoints, selected_date, origin_city, dest_city), 
+              width="stretch", height=600, key=f"map_{selected_date}_{origin_city}_{dest_city}")
+    st.info(f"📏 מרחק כולל במסלול: {dist} מייל ימי. משך הפלגה עשוי להימשך כ- {dist / 8} שעות")
 
-    with col2:
-        st.write("### סטטוס נתיב")
-        st.info(f"ממריא מ: **{origin_city}**")
-        st.success(f"יעד סופי: **{destination_city}**")
-        st.write("---")
-        st.write("**מקרא סיכונים:**")
-        st.error("🔴 High Risk")
-        st.warning("🟠 Moderate Risk")
-        st.success("🟢 Low Risk")
-        st.info("🔵 Waypoint (No Data)")
+with col_info:
+    st.markdown('<div class="rtl-text"><b>נתוני הפלגה</b></div>', unsafe_allow_html=True)
+    st.metric("מנמל", origin_city)
+    st.metric("ליעד", dest_city)
+    st.write("---")
+    st.markdown("""
+    <div class="rtl-text">
+    <b>מקרא:</b><br>
+    🔴 סיכון גבוה<br>
+    🟠 סיכון בינוני<br>
+    🟢 סיכון נמוך<br>
+    🔵 נקודת מסלול
+    </div>
+    """, unsafe_allow_html=True)
 
-    with st.expander("לצפייה בנתונים הגולמיים"):
-        st.dataframe(filtered_df)
+# טבלה תחתונה - משתמשת ב-info_points
+st.write("---")
+st.subheader("📊 פירוט תחזית לנקודות הדרך")
+if not info_points.empty:
+    disp_cols = ['waypoint_id', 'risk_summary', 'wind_speed_kn', 'weather', 'rain_mm']
+    st.dataframe(info_points[disp_cols], width="stretch", hide_index=True)
 else:
-    st.info("בחר תאריך בסרגל הצד כדי להציג את נתוני הנתיב.")
+    st.info("בחר תאריך כדי להציג את פירוט התחזית.")

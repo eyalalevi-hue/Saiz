@@ -21,16 +21,17 @@ from streamlit_folium import st_folium
 ### User will provide the origin and destination cities, then we need to get their coordinates.
 origin_city = "Tel Aviv" # "Haifa" #not Lisbon
 origin_coordinates = get_coordinates_by_city(origin_city)
-print(origin_coordinates) 
+#print(origin_coordinates) 
 
-destination_city = "Larnaka"# "Larnaka" #not Lisbon
+destination_city = "Antalya"  #"Larnaka"# "Larnaka" #not Lisbon
 destination_coordinates = get_coordinates_by_city(destination_city)
-print(destination_coordinates)
+#print(destination_coordinates)
 
 
 ### creating the sea router and getting the path between the origin and destination coordinates
-router = SeaRouter(resolution = 0.1) # Resolution in degrees (0.25° ~ 27.8 nautical miles at the equator)
+router = SeaRouter(resolution = 0.05) # Resolution in degrees (0.25° ~ 27.8 nautical miles at the equator)
 dist, path = router.get_sea_path(origin_coordinates, destination_coordinates)
+
 
 if dist:
     print(f"✅ Route Found!")
@@ -129,7 +130,7 @@ if 'run_index' in df_final.columns:
 
 
 
-###########
+########### create html
 sailing_map = create_route_map(df_final)
 
 ###########
