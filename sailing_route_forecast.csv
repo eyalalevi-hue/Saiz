@@ -1,11 +1,11 @@
 lat,lon,waypoint_id,date,run_index,risk_score,risk_summary,wind_speed_kn,wind_speed_risk,wind_gusts_kn,wind_gusts_risk,wind_direction,weather,rain_mm,rain_risk
-32.1,34.75,1,20-03-2026,1.0,57.7,Moderate Risk,13.2,Moderate Risk,29.9,High Risk,SW,Moderate Drizzle,1.3,Low Risk
-32.1,34.75,2,21-03-2026,2.0,56.4,Moderate Risk,12.8,Low Risk,30.7,High Risk,SW,Moderate Drizzle,0.2,Low Risk
-32.1,34.75,3,22-03-2026,3.0,49.1,Moderate Risk,11.2,Low Risk,25.5,Moderate Risk,SW,Moderate Drizzle,0.1,Low Risk
-32.1,34.75,4,23-03-2026,4.0,23.6,Low Risk,5.0,Low Risk,13.6,Low Risk,W,Overcast,0.0,Low Risk
-32.1,34.75,5,24-03-2026,5.0,38.8,Low Risk,8.3,Low Risk,20.8,Moderate Risk,W,Light Drizzle,0.0,Low Risk
-32.1,34.75,6,25-03-2026,6.0,59.5,Moderate Risk,11.5,Low Risk,23.3,Moderate Risk,SW,Slight Rain Showers,3.6,Moderate Risk
-32.1,34.75,7,26-03-2026,7.0,63.4,Moderate Risk,13.6,Moderate Risk,32.1,High Risk,SW,Moderate Drizzle,3.3,Moderate Risk
+32.1,34.75,1,20-03-2026,1.0,56.6,Moderate Risk,12.9,Low Risk,29.9,High Risk,SW,Moderate Drizzle,0.8,Low Risk
+32.1,34.75,2,21-03-2026,2.0,63.7,Moderate Risk,12.9,Low Risk,30.7,High Risk,SW,Dense Drizzle,3.7,Moderate Risk
+32.1,34.75,3,22-03-2026,3.0,54.9,Moderate Risk,10.0,Low Risk,25.5,Moderate Risk,SW,Dense Drizzle,3.6,Moderate Risk
+32.1,34.75,4,23-03-2026,4.0,24.2,Low Risk,5.5,Low Risk,13.6,Low Risk,NW,Overcast,0.0,Low Risk
+32.1,34.75,5,24-03-2026,5.0,36.4,Low Risk,6.2,Low Risk,20.8,Moderate Risk,NW,Light Drizzle,0.1,Low Risk
+32.1,34.75,6,25-03-2026,6.0,58.0,Moderate Risk,8.5,Low Risk,23.3,Moderate Risk,SW,Slight Rain Showers,5.0,Moderate Risk
+32.1,34.75,7,26-03-2026,7.0,62.8,Moderate Risk,10.9,Low Risk,32.1,High Risk,SW,Moderate Drizzle,5.1,Moderate Risk
 32.15,34.75,8,N/A,7.0,0.0,N/A,0.0,0,0.0,0,N/A,N/A,0.0,0
 32.2,34.75,9,N/A,7.0,0.0,N/A,0.0,0,0.0,0,N/A,N/A,0.0,0
 32.25,34.75,10,N/A,7.0,0.0,N/A,0.0,0,0.0,0,N/A,N/A,0.0,0
@@ -28,13 +28,13 @@ lat,lon,waypoint_id,date,run_index,risk_score,risk_summary,wind_speed_kn,wind_sp
 33.1,34.05,27,N/A,7.0,0.0,N/A,0.0,0,0.0,0,N/A,N/A,0.0,0
 33.15,34.0,28,N/A,7.0,0.0,N/A,0.0,0,0.0,0,N/A,N/A,0.0,0
 33.2,33.95,29,N/A,7.0,0.0,N/A,0.0,0,0.0,0,N/A,N/A,0.0,0
-33.25,33.9,30,20-03-2026,1.0,82.5,High Risk,26.0,High Risk,34.8,High Risk,SW,Slight Rain Showers,0.5,Low Risk
-33.25,33.9,31,21-03-2026,2.0,73.5,High Risk,29.1,High Risk,40.2,High Risk,SW,Light Drizzle,0.3,Low Risk
-33.25,33.9,32,22-03-2026,3.0,74.8,High Risk,21.2,High Risk,28.9,High Risk,SW,Moderate Rain Showers,1.0,Low Risk
-33.25,33.9,33,23-03-2026,4.0,47.7,Moderate Risk,13.9,Moderate Risk,22.6,Moderate Risk,SW,Light Drizzle,0.3,Low Risk
-33.25,33.9,34,24-03-2026,5.0,28.5,Low Risk,8.9,Low Risk,13.8,Low Risk,W,Overcast,0.0,Low Risk
-33.25,33.9,35,25-03-2026,6.0,69.4,Moderate Risk,13.8,Moderate Risk,18.8,Moderate Risk,S,Moderate Rain Showers,23.8,High Risk
-33.25,33.9,36,26-03-2026,7.0,58.1,Moderate Risk,18.9,Moderate Risk,24.5,Moderate Risk,W,Moderate Drizzle,0.6,Low Risk
+33.25,33.9,30,20-03-2026,1.0,83.1,High Risk,26.2,High Risk,34.8,High Risk,SW,Slight Rain Showers,0.9,Low Risk
+33.25,33.9,31,21-03-2026,2.0,74.5,High Risk,28.1,High Risk,40.2,High Risk,SW,Light Drizzle,1.0,Low Risk
+33.25,33.9,32,22-03-2026,3.0,67.9,Moderate Risk,18.3,Moderate Risk,28.9,High Risk,SW,Slight Rain Showers,0.0,Low Risk
+33.25,33.9,33,23-03-2026,4.0,46.3,Moderate Risk,10.6,Low Risk,22.6,Moderate Risk,SW,Light Drizzle,2.0,Moderate Risk
+33.25,33.9,34,24-03-2026,5.0,35.4,Low Risk,11.2,Low Risk,13.8,Low Risk,W,Light Drizzle,0.1,Low Risk
+33.25,33.9,35,25-03-2026,6.0,49.4,Moderate Risk,9.3,Low Risk,18.8,Moderate Risk,SW,Moderate Drizzle,6.3,High Risk
+33.25,33.9,36,26-03-2026,7.0,54.0,Moderate Risk,17.7,Moderate Risk,24.5,Moderate Risk,NW,Light Drizzle,0.2,Low Risk
 33.3,33.85,37,N/A,7.0,0.0,N/A,0.0,0,0.0,0,N/A,N/A,0.0,0
 33.35,33.8,38,N/A,7.0,0.0,N/A,0.0,0,0.0,0,N/A,N/A,0.0,0
 33.4,33.75,39,N/A,7.0,0.0,N/A,0.0,0,0.0,0,N/A,N/A,0.0,0
@@ -58,13 +58,13 @@ lat,lon,waypoint_id,date,run_index,risk_score,risk_summary,wind_speed_kn,wind_sp
 34.3,32.85,57,N/A,7.0,0.0,N/A,0.0,0,0.0,0,N/A,N/A,0.0,0
 34.35,32.8,58,N/A,7.0,0.0,N/A,0.0,0,0.0,0,N/A,N/A,0.0,0
 34.4,32.75,59,N/A,7.0,0.0,N/A,0.0,0,0.0,0,N/A,N/A,0.0,0
-34.45,32.7,60,20-03-2026,1.0,49.4,Moderate Risk,10.0,Low Risk,26.2,High Risk,SW,Moderate Drizzle,0.8,Low Risk
-34.45,32.7,61,21-03-2026,2.0,53.7,Moderate Risk,10.0,Low Risk,22.6,Moderate Risk,SW,Slight Rain Showers,1.4,Low Risk
-34.45,32.7,62,22-03-2026,3.0,39.3,Low Risk,8.3,Low Risk,18.1,Moderate Risk,W,Moderate Drizzle,0.8,Low Risk
-34.45,32.7,63,23-03-2026,4.0,39.3,Low Risk,8.7,Low Risk,18.3,Moderate Risk,SW,Moderate Drizzle,0.4,Low Risk
-34.45,32.7,64,24-03-2026,5.0,37.8,Low Risk,7.1,Low Risk,18.8,Moderate Risk,SW,Moderate Drizzle,0.3,Low Risk
-34.45,32.7,65,25-03-2026,6.0,31.6,Low Risk,2.7,Low Risk,11.3,Low Risk,SE,Dense Drizzle,3.4,Moderate Risk
-34.45,32.7,66,26-03-2026,7.0,46.6,Moderate Risk,11.0,Low Risk,23.9,Moderate Risk,NW,Light Drizzle,1.0,Low Risk
+34.45,32.7,60,20-03-2026,1.0,59.0,Moderate Risk,10.7,Low Risk,26.2,High Risk,SW,Dense Drizzle,5.3,Moderate Risk
+34.45,32.7,61,21-03-2026,2.0,46.6,Moderate Risk,12.3,Low Risk,22.6,Moderate Risk,W,Light Drizzle,0.8,Low Risk
+34.45,32.7,62,22-03-2026,3.0,41.3,Moderate Risk,7.6,Low Risk,18.1,Moderate Risk,SW,Dense Drizzle,1.4,Low Risk
+34.45,32.7,63,23-03-2026,4.0,35.9,Low Risk,7.1,Low Risk,18.3,Moderate Risk,W,Light Drizzle,0.7,Low Risk
+34.45,32.7,64,24-03-2026,5.0,41.2,Moderate Risk,7.5,Low Risk,18.8,Moderate Risk,SW,Moderate Drizzle,2.3,Moderate Risk
+34.45,32.7,65,25-03-2026,6.0,35.4,Low Risk,5.2,Low Risk,11.3,Low Risk,S,Dense Drizzle,3.9,Moderate Risk
+34.45,32.7,66,26-03-2026,7.0,39.7,Low Risk,6.5,Low Risk,23.9,Moderate Risk,NW,Light Drizzle,0.0,Low Risk
 34.5,32.65,67,N/A,7.0,0.0,N/A,0.0,0,0.0,0,N/A,N/A,0.0,0
 34.55,32.6,68,N/A,7.0,0.0,N/A,0.0,0,0.0,0,N/A,N/A,0.0,0
 34.6,32.55,69,N/A,7.0,0.0,N/A,0.0,0,0.0,0,N/A,N/A,0.0,0
@@ -88,13 +88,13 @@ lat,lon,waypoint_id,date,run_index,risk_score,risk_summary,wind_speed_kn,wind_sp
 35.5,32.05,87,N/A,7.0,0.0,N/A,0.0,0,0.0,0,N/A,N/A,0.0,0
 35.55,32.0,88,N/A,7.0,0.0,N/A,0.0,0,0.0,0,N/A,N/A,0.0,0
 35.6,31.95,89,N/A,7.0,0.0,N/A,0.0,0,0.0,0,N/A,N/A,0.0,0
-35.65,31.9,90,20-03-2026,1.0,59.1,Moderate Risk,17.8,Moderate Risk,24.7,Moderate Risk,SW,Dense Drizzle,0.7,Low Risk
-35.65,31.9,91,21-03-2026,2.0,52.6,Moderate Risk,10.5,Low Risk,24.5,Moderate Risk,NE,Dense Drizzle,2.3,Moderate Risk
-35.65,31.9,92,22-03-2026,3.0,36.8,Low Risk,8.5,Low Risk,14.6,Low Risk,E,Moderate Drizzle,1.3,Low Risk
-35.65,31.9,93,23-03-2026,4.0,34.8,Low Risk,8.2,Low Risk,13.6,Low Risk,SE,Moderate Drizzle,0.9,Low Risk
-35.65,31.9,94,24-03-2026,5.0,47.3,Moderate Risk,11.3,Low Risk,15.8,Low Risk,S,Slight Rain Showers,0.6,Low Risk
-35.65,31.9,95,25-03-2026,6.0,49.0,Moderate Risk,10.7,Low Risk,16.9,Moderate Risk,E,Slight Rain Showers,1.5,Low Risk
-35.65,31.9,96,26-03-2026,7.0,60.7,Moderate Risk,21.2,High Risk,26.8,High Risk,NW,Light Drizzle,0.3,Low Risk
+35.65,31.9,90,20-03-2026,1.0,67.2,Moderate Risk,16.0,Moderate Risk,24.7,Moderate Risk,SW,Slight Rain Showers,4.2,Moderate Risk
+35.65,31.9,91,21-03-2026,2.0,57.5,Moderate Risk,10.7,Low Risk,24.5,Moderate Risk,SW,Slight Rain Showers,2.1,Moderate Risk
+35.65,31.9,92,22-03-2026,3.0,39.2,Low Risk,13.8,Moderate Risk,14.6,Low Risk,SE,Light Drizzle,0.0,Low Risk
+35.65,31.9,93,23-03-2026,4.0,54.1,Moderate Risk,13.2,Moderate Risk,13.6,Low Risk,E,Slight Rain Showers,5.1,Moderate Risk
+35.65,31.9,94,24-03-2026,5.0,41.8,Moderate Risk,9.7,Low Risk,15.8,Low Risk,SE,Moderate Drizzle,2.9,Moderate Risk
+35.65,31.9,95,25-03-2026,6.0,42.9,Moderate Risk,13.1,Moderate Risk,16.9,Moderate Risk,SE,Moderate Drizzle,0.2,Low Risk
+35.65,31.9,96,26-03-2026,7.0,58.9,Moderate Risk,15.9,Moderate Risk,26.8,High Risk,NW,Moderate Drizzle,2.0,Moderate Risk
 35.7,31.85,97,N/A,7.0,0.0,N/A,0.0,0,0.0,0,N/A,N/A,0.0,0
 35.75,31.8,98,N/A,7.0,0.0,N/A,0.0,0,0.0,0,N/A,N/A,0.0,0
 35.8,31.75,99,N/A,7.0,0.0,N/A,0.0,0,0.0,0,N/A,N/A,0.0,0
@@ -118,10 +118,10 @@ lat,lon,waypoint_id,date,run_index,risk_score,risk_summary,wind_speed_kn,wind_sp
 36.7,30.85,117,N/A,7.0,0.0,N/A,0.0,0,0.0,0,N/A,N/A,0.0,0
 36.75,30.8,118,N/A,7.0,0.0,N/A,0.0,0,0.0,0,N/A,N/A,0.0,0
 36.8,30.75,119,N/A,7.0,0.0,N/A,0.0,0,0.0,0,N/A,N/A,0.0,0
-36.85,30.7,120,20-03-2026,1.0,36.7,Low Risk,5.6,Low Risk,15.8,Low Risk,E,Moderate Drizzle,2.8,Moderate Risk
-36.85,30.7,121,21-03-2026,2.0,22.5,Low Risk,5.8,Low Risk,11.4,Low Risk,N,Overcast,0.1,Low Risk
-36.85,30.7,122,22-03-2026,3.0,24.9,Low Risk,6.9,Low Risk,14.6,Low Risk,NE,Partly cloudy,0.0,Low Risk
-36.85,30.7,123,23-03-2026,4.0,27.0,Low Risk,5.7,Low Risk,15.9,Low Risk,E,Overcast,0.2,Low Risk
-36.85,30.7,124,24-03-2026,5.0,30.5,Low Risk,5.8,Low Risk,15.2,Low Risk,E,Light Drizzle,0.2,Low Risk
-36.85,30.7,125,25-03-2026,6.0,26.2,Low Risk,3.9,Low Risk,12.9,Low Risk,E,Light Drizzle,0.4,Low Risk
-36.85,30.7,126,26-03-2026,7.0,29.5,Low Risk,7.7,Low Risk,16.3,Moderate Risk,N,Overcast,0.0,Low Risk
+36.85,30.7,120,20-03-2026,1.0,42.7,Moderate Risk,6.3,Low Risk,15.8,Low Risk,E,Dense Drizzle,4.9,Moderate Risk
+36.85,30.7,121,21-03-2026,2.0,22.3,Low Risk,5.5,Low Risk,11.4,Low Risk,NE,Overcast,0.2,Low Risk
+36.85,30.7,122,22-03-2026,3.0,29.3,Low Risk,5.2,Low Risk,14.6,Low Risk,SE,Light Drizzle,0.3,Low Risk
+36.85,30.7,123,23-03-2026,4.0,26.6,Low Risk,5.6,Low Risk,15.9,Low Risk,N,Overcast,0.0,Low Risk
+36.85,30.7,124,24-03-2026,5.0,28.8,Low Risk,4.3,Low Risk,15.2,Low Risk,NE,Light Drizzle,0.3,Low Risk
+36.85,30.7,125,25-03-2026,6.0,27.2,Low Risk,5.0,Low Risk,12.9,Low Risk,E,Light Drizzle,0.2,Low Risk
+36.85,30.7,126,26-03-2026,7.0,27.1,Low Risk,7.3,Low Risk,16.3,Moderate Risk,NW,Partly cloudy,0.0,Low Risk

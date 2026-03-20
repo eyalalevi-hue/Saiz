@@ -3,11 +3,17 @@ import pandas as pd
 import folium
 from streamlit_folium import st_folium
 
+
 # ייבוא המרחק - הגנה מפני קריסה
-try:
-    from main import dist
-except Exception:
-    dist = "N/A"
+# try:
+#     from main import dist
+# except Exception:
+#     dist = "N/A"
+
+
+## זמני לטובת בדיקות שימוש רק במרחק מתוך משתנה קבוע
+### להחליף בהרצה 
+dist =  356.98  # מרחק קבוע לדוגמה (120 מייל ימי)
 
 # --- 1. הגדרות דף ---
 st.set_page_config(layout="wide", page_title="Sailing Risk Advisor")
@@ -29,6 +35,7 @@ st.markdown("""
 # --- 3. מאגר נמלים מקומי ---
 LOCAL_PORTS = {
     "Tel Aviv": [32.0853, 34.7818],
+    "Antalya": [36.8872942, 30.7074549],
     "Haifa": [32.8192, 34.9992],
     "Limassol": [34.6750, 33.0440],
     "Larnaca": [34.9173, 33.6427],
@@ -62,7 +69,7 @@ available_dates = sorted([d for d in df_raw['date'].unique() if d not in ['N/A',
 with st.sidebar:
     st.header("📍 תכנון מסלול")
     origin_city = st.selectbox("נמל מוצא:", list(LOCAL_PORTS.keys()), index=0)
-    dest_city = st.selectbox("נמל יעד:", list(LOCAL_PORTS.keys()), index=2)
+    dest_city = st.selectbox("נמל יעד:", list(LOCAL_PORTS.keys()), index=1)
     
     st.write("---")
     st.write("**בחר תאריך לתחזית:**")
@@ -127,15 +134,25 @@ def create_map(full_path, date_str, start_city, end_city):
             fill_opacity=opacity,
             popup=popup
         ).add_to(m)
-
-    # 3. סמלי מוצא ויעד
-    for p_name, p_color in [(start_city, 'blue'), (end_city, 'black')]:
-        if p_name in LOCAL_PORTS:
-            folium.Marker(
-                location=LOCAL_PORTS[p_name], 
-                icon=folium.Icon(color=p_color, icon='anchor', prefix='fa'),
-                popup=p_name
-            ).add_to(m)
+        
+# 3. סמלי מוצא ויעד (מעודכן: רק סיכה למוצא)
+    if start_city in LOCAL_PORTS:
+        folium.Marker(
+            location=LOCAL_PORTS[start_city], 
+            icon=folium.Icon(color='blue', icon='ship', prefix='fa'),
+            #icon=folium.Icon(color='blue', icon='info-sign'), # סיכה (pin) כחולה
+            popup=f"מוצא: {start_city}"
+        ).add_to(m)
+    
+    # הערה: הסרנו את הלולאה שמוסיפה את ה-Marker של היעד לבקשתך
+    # # 3. סמלי מוצא ויעד
+    # for p_name, p_color in [(start_city, 'blue'), (end_city, 'black')]:
+    #     if p_name in LOCAL_PORTS:
+    #         folium.Marker(
+    #             location=LOCAL_PORTS[p_name], 
+    #             icon=folium.Icon(color=p_color, icon='anchor', prefix='fa'),
+    #             popup=p_name
+    #         ).add_to(m)
 
     return m
 
@@ -148,7 +165,7 @@ with col_map:
     # Key דינמי לרענון המפה
     st_folium(create_map(all_waypoints, selected_date, origin_city, dest_city), 
               width="stretch", height=600, key=f"map_{selected_date}_{origin_city}_{dest_city}")
-    st.info(f"📏 מרחק כולל במסלול: {dist} מייל ימי. משך הפלגה עשוי להימשך כ- {dist / 8} שעות")
+    st.info(f"📏 מרחק כולל במסלול: {round(dist)} מייל ימי. משך הפלגה עשוי להימשך כ- {round(dist / 8)} שעות")
 
 with col_info:
     st.markdown('<div class="rtl-text"><b>נתוני הפלגה</b></div>', unsafe_allow_html=True)
@@ -169,7 +186,7 @@ with col_info:
 st.write("---")
 st.subheader("📊 פירוט תחזית לנקודות הדרך")
 if not info_points.empty:
-    disp_cols = ['waypoint_id', 'risk_summary', 'wind_speed_kn', 'weather', 'rain_mm']
+    disp_cols = ['waypoint_id', 'risk_summary', 'wind_speed_kn', 'wind_direction', 'weather', 'rain_mm']
     st.dataframe(info_points[disp_cols], width="stretch", hide_index=True)
 else:
     st.info("בחר תאריך כדי להציג את פירוט התחזית.")
