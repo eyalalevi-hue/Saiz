@@ -4,16 +4,18 @@ import folium
 from streamlit_folium import st_folium
 
 
-# ייבוא המרחק - הגנה מפני קריסה
-# try:
-#     from main import dist
-# except Exception:
-#     dist = "N/A"
+#לריצה אמיתית יש להכניס השמת משתנה dist לcomment 
+#ולהריץ את השורות try except 
 
+#ייבוא המרחק 
+try:
+     from main import dist
+except Exception:
+     dist = "N/A"
 
 ## זמני לטובת בדיקות שימוש רק במרחק מתוך משתנה קבוע
 ### להחליף בהרצה 
-dist =  356.98  # מרחק קבוע לדוגמה (120 מייל ימי)
+#dist =  356.98  # מרחק קבוע לדוגמה (120 מייל ימי)
 
 # --- 1. הגדרות דף ---
 st.set_page_config(layout="wide", page_title="Sailing Risk Advisor")

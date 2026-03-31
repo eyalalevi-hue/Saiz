@@ -1,21 +1,19 @@
 #SailZ
-import sys
-import os
+#import sys
+#import os
 import time
-from turtle import st
-#sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-
-#from app import create_streamlit_map
-from get_coordinates_by_city import get_coordinates_by_city
-
 import pandas as pd
 import numpy as np
 
+#from turtle import st
+#sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+#from app import create_streamlit_map
+from get_coordinates_by_city import get_coordinates_by_city
 from sea_routing import SeaRouter
 from risk_analysis import  fetch_and_check_risk
 from df_table import results_to_dataframe
-from sea_mapp import create_route_map
-from streamlit_folium import st_folium
+from sea_map import create_route_map
+#from streamlit_folium import st_folium
 
 
 ### User will provide the origin and destination cities, then we need to get their coordinates.
@@ -46,9 +44,7 @@ else:
 #print(path )
 
 
-
 ### Reduce the number of points to a manageable number for weather analysis (e.g., 5 points)
-
 def get_equally_distributed_points(path, num_points=5):
 
     if len(path) <= num_points:
@@ -60,7 +56,7 @@ def get_equally_distributed_points(path, num_points=5):
     # שליפת הערכים לפי האינדקסים שחושבו
     return [path[i] for i in indices]
 
-# דוגמה לשימוש:
+# fot testing.
 #my_data = [(35.25, 32.75), (35.5, 33.0), (35.5, 33.25), (35.5, 33.5), (35.5, 33.75), (35.25, 34.0), (35.0, 34.25), (34.75, 34.5), (34.5, 34.75), (34.25, 35.0), (34.0, 35.0), (33.75, 35.0), (33.5, 35.0)]
 
 reduce_path = get_equally_distributed_points(path, 5)
@@ -135,79 +131,14 @@ sailing_map = create_route_map(df_final)
 
 ###########
 
+#Create CSV file for practice.
 #Saving the results to a CSV file for further analysis or sharing.
 df_final.to_csv('sailing_route_forecast.csv', index=False, encoding='utf-8')
 print("✅ 'sailing_route_forecast.csv' saved successfully!")
 print("    Go to streamlit_map")
 
-
+#Create CSV file for practice.
 ### to create the map with the path and the points we got from the get_path function
 sailing_map.save("sailing_route_final.html")
 print("Map saved to sailing_route_final.html - Open this file in your browser.")
 
-
-
-
-
-
-'''
-if 'df' in locals() or 'df' in globals():
-    # יצירת המפה
-    m = create_streamlit_map(df)
-    
-    # הפקודה הקריטית שמציגה את המפה בתוך האפליקציה
-    st_folium(m, width=1200, height=600)
-else:
-    st.warning("לא נמצאו נתונים להצגה. וודא שה-DataFrame טעון.")
-''' 
-    
-### to create the map with the path and the points we got from the get_path function
-#create_interactive_sea_map(path, origin_coordinates, destination_coordinates)
-#create_route_map(df, filename="sea_route_points.html")
-# sailing_map = create_route_map(df)
-
-
-
-
-
-'''
-Next steps:
-1. use path points to provide weather information for each point along the path. waiting 
-2. Integrate the get_path function with the SeaRouter to get the actual path coordinates. 
-3. Add error handling for cases where no path is found or when the API fails. negetive cordinate.get_coordinates_by_city - Lisbon, Portugal.listed as (38.7, -9.13) instead of (38.7, -9.13)
-'''
-
-
-
-
-
-
-
-
-
-'''
-
-import numpy as np
-
-def get_equally_distributed_points(data, num_points=5):
-
-    if len(data) <= num_points:
-        return data  
-    
-    # יצירת אינדקסים במרווחים שווים (כולל הקצוות)
-    indices = np.linspace(0, len(data) - 1, num_points).astype(int)
-    
-    # שליפת הערכים לפי האינדקסים שחושבו
-    return [data[i] for i in indices]
-
-# דוגמה לשימוש:
-#my_data = list(range(100, 1000, 5)) # סדרה של 180 ערכים
-
-my_data = [(35.25, 32.75), (35.5, 33.0), (35.5, 33.25), (35.5, 33.5), (35.5, 33.75), (35.25, 34.0), (35.0, 34.25), (34.75, 34.5), (34.5, 34.75), (34.25, 35.0), (34.0, 35.0), (33.75, 35.0), (33.5, 35.0)]
-
-result = get_equally_distributed_points(my_data, 5)
-
-print(f"נבחרו {len(result)} נקודות:")
-print(result)
-
-'''
